@@ -1,0 +1,5 @@
+{
+  "name": "@sdd/agent-runner",
+  "private": true,
+  "type": "module"
+}

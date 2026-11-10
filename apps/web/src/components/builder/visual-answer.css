@@ -1,0 +1,293 @@
+/* Interactive answers in Build with AI: comparison, steps, chart. Tokens only; one hue for bars. */
+.visual-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: -4px 0 0;
+}
+.visual-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.visual-skeleton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.visual-basis {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  margin: 0;
+  color: var(--muted);
+}
+.visual-basis svg {
+  flex: none;
+  margin-top: 3px;
+}
+
+/* Weights */
+.visual-weights {
+  display: grid;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.visual-weights legend {
+  padding: 0 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.visual-weight {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(90px, 160px) 64px;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+.visual-weight input[type='range'] {
+  min-height: 24px;
+  accent-color: var(--accent);
+}
+.visual-weight-value {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+/* Bars (ranking and chart) */
+.visual-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* One grid for all rows, so every track has the same width and a limit line falls at the same place. */
+.visual-bars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(80px, 34%) minmax(0, 1fr) auto;
+  gap: 6px 10px;
+}
+.visual-bar {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: center;
+  gap: 10px;
+  min-height: 28px;
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+.visual-bar:hover,
+.visual-bar:focus-visible {
+  background: var(--accent-soft);
+}
+.visual-bar-label {
+  overflow-wrap: anywhere;
+  font-size: 0.9rem;
+}
+.visual-bar.lead .visual-bar-label,
+.visual-bar.lead .visual-bar-value {
+  font-weight: 700;
+}
+.visual-bar-track {
+  position: relative;
+  height: 12px;
+  border-radius: 0 4px 4px 0;
+  background: var(--subtle);
+  box-shadow: inset 1px 0 0 var(--line-strong);
+}
+.visual-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 0 4px 4px 0;
+  background: var(--accent);
+}
+.visual-bar-mark {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--text);
+}
+.visual-bar-value {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+.visual-bar-value em {
+  font-style: normal;
+  color: var(--amber);
+}
+.visual-target {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: var(--muted);
+}
+.visual-target-swatch {
+  width: 2px;
+  height: 14px;
+  background: var(--text);
+}
+.visual-leader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-weight: 600;
+}
+.visual-leader svg {
+  color: var(--accent);
+}
+
+/* Score table */
+.visual-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.visual-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.visual-table th,
+.visual-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.visual-table thead th {
+  background: var(--subtle);
+  font-weight: 600;
+}
+.visual-table tr.ignored {
+  opacity: 0.55;
+}
+.visual-score {
+  display: inline-flex;
+  gap: 3px;
+  vertical-align: middle;
+}
+.visual-score i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--control-line);
+}
+.visual-score i.on {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.visual-note {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+}
+
+/* Steps */
+.visual-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.visual-steps button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 4px 10px 4px 4px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+.visual-steps button.done {
+  border-color: var(--accent-soft);
+}
+.visual-steps button.current {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+.visual-step-number {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--subtle);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.visual-steps button.current .visual-step-number,
+.visual-steps button.done .visual-step-number {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.visual-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--subtle);
+  overflow: hidden;
+}
+.visual-progress span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.visual-step-detail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--surface);
+}
+.visual-step-detail p {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--text);
+}
+.visual-controls {
+  gap: 4px;
+}
+
+@media (max-width: 560px) {
+  .visual-weight {
+    grid-template-columns: minmax(0, 1fr) 64px;
+  }
+  .visual-weight input[type='range'] {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .visual-bars {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .visual-bar-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}

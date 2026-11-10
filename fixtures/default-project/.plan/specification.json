@@ -1,0 +1,1398 @@
+{
+  "format": "sdd-studio",
+  "version": 1,
+  "spec": {
+    "schemaVersion": 1,
+    "id": "00000000-0000-4000-8000-000000000001",
+    "name": "Customer Request Portal",
+    "description": "Example project: a self-service portal where business customers submit and follow service requests and support agents triage and reply. Every documentation module is filled in.",
+    "projectType": "Web application",
+    "language": "en",
+    "localOnly": false,
+    "level": "complete",
+    "revision": 0,
+    "sections": [
+      {
+        "id": "discovery",
+        "markdown": "# Business & discovery\n\nStart with the problem worth solving.\n\n## Problem to solve\n\n<!-- sdd:answer discovery.1 -->\nBusiness customers track service requests through email threads. Support spends about 6 hours per week answering status questions, and customers cannot see progress or history in one place.\n<!-- sdd:end -->\n\n## Business goals\n\n<!-- sdd:answer discovery.2 -->\nReduce status follow-up emails by 30% within one quarter of launch. Give every customer a single, current view of their requests.\n<!-- sdd:end -->\n\n## Stakeholders and owners\n\n<!-- sdd:answer discovery.3 -->\n| Stakeholder | Interest | Decision rights |\n| --- | --- | --- |\n| Customer Experience director | Fewer escalations | Approves scope and budget |\n| Platform Engineering lead | Operable, secure system | Approves architecture |\n| Support Operations manager | Faster responses | Consulted on workflows |\n| Security architect | Tenant isolation | Approves threat model |\n<!-- sdd:end -->\n\n## Target users and personas\n\n<!-- sdd:answer discovery.4 -->\nPrimary: office managers at client companies who submit and follow requests a few times a week from a laptop. Secondary: support agents who work in the tool all day and need fast triage.\n<!-- sdd:end -->\n\n## Expected users and concurrent users\n\n<!-- sdd:answer discovery.5 -->\nLaunch: 2,000 registered users, 200 daily, 50 concurrent. Year one: 10,000 registered, 250 concurrent. Source: current CRM account list; confidence medium.\n<!-- sdd:end -->\n\n## Business model and budget\n\n<!-- sdd:answer discovery.6 -->\nInternal cost centre (Customer Experience). Build: 3 engineers for 4 months. Hosting under $600/month; AI assistance capped at $150/month.\n<!-- sdd:end -->\n\n## Constraints and assumptions\n\n<!-- sdd:answer discovery.7 -->\nMust run on the company Kubernetes platform and use the corporate identity provider. Assumption: customers accept email notifications — validate with 5 interviews before the pilot.\n<!-- sdd:end -->\n\n## Success metrics\n\n<!-- sdd:answer discovery.8 -->\nStatus emails per week: 120 → 84 by end of Q2 (support mailbox tags). Median first response time under 4 business hours (support tool).\n<!-- sdd:end -->\n\n## Business risks\n\n<!-- sdd:answer discovery.9 -->\n| Risk | Likelihood | Impact | Mitigation | Owner |\n| --- | --- | --- | --- | --- |\n| Low customer adoption | Medium | High | Pilot with 3 accounts before launch | Product owner |\n| Identity integration delayed | Medium | Medium | Register OIDC client in week 1 | Tech lead |\n<!-- sdd:end -->\n",
+        "diagram": "mindmap\n  root((Product idea))\n    Problem\n      Who is affected\n      Current workaround\n    Goals\n      Outcome metric\n    Stakeholders\n      Sponsor\n      Users\n    Risks\n      Adoption\n      Budget",
+        "answers": {
+          "discovery.1": {
+            "value": "Business customers track service requests through email threads. Support spends about 6 hours per week answering status questions, and customers cannot see progress or history in one place.",
+            "state": "answered",
+            "reason": ""
+          },
+          "discovery.2": {
+            "value": "Reduce status follow-up emails by 30% within one quarter of launch. Give every customer a single, current view of their requests.",
+            "state": "answered",
+            "reason": ""
+          },
+          "discovery.3": {
+            "value": "[[\"Customer Experience director\",\"Fewer escalations\",\"Approves scope and budget\"],[\"Platform Engineering lead\",\"Operable, secure system\",\"Approves architecture\"],[\"Support Operations manager\",\"Faster responses\",\"Consulted on workflows\"],[\"Security architect\",\"Tenant isolation\",\"Approves threat model\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "discovery.4": {
+            "value": "Primary: office managers at client companies who submit and follow requests a few times a week from a laptop. Secondary: support agents who work in the tool all day and need fast triage.",
+            "state": "answered",
+            "reason": ""
+          },
+          "discovery.5": {
+            "value": "Launch: 2,000 registered users, 200 daily, 50 concurrent. Year one: 10,000 registered, 250 concurrent. Source: current CRM account list; confidence medium.",
+            "state": "answered",
+            "reason": ""
+          },
+          "discovery.6": {
+            "value": "Internal cost centre (Customer Experience). Build: 3 engineers for 4 months. Hosting under $600/month; AI assistance capped at $150/month.",
+            "state": "answered",
+            "reason": ""
+          },
+          "discovery.7": {
+            "value": "Must run on the company Kubernetes platform and use the corporate identity provider. Assumption: customers accept email notifications — validate with 5 interviews before the pilot.",
+            "state": "answered",
+            "reason": ""
+          },
+          "discovery.8": {
+            "value": "Status emails per week: 120 → 84 by end of Q2 (support mailbox tags). Median first response time under 4 business hours (support tool).",
+            "state": "answered",
+            "reason": ""
+          },
+          "discovery.9": {
+            "value": "[[\"Low customer adoption\",\"Medium\",\"High\",\"Pilot with 3 accounts before launch\",\"Product owner\"],[\"Identity integration delayed\",\"Medium\",\"Medium\",\"Register OIDC client in week 1\",\"Tech lead\"]]",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "discovery-ref-1",
+            "title": "ISO/IEC/IEEE 29148 — Requirements engineering",
+            "url": "https://www.iso.org/standard/72089.html",
+            "kind": "official"
+          },
+          {
+            "id": "discovery-ref-2",
+            "title": "Impact Mapping",
+            "url": "https://www.impactmapping.org/",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "scope",
+        "markdown": "# Scope & requirements\n\nDefine what success includes.\n\n## In scope\n\n<!-- sdd:answer scope.1 -->\nSign-in through company SSO, request creation with attachments, request timeline, support replies, email notifications and an agent triage queue.\n<!-- sdd:end -->\n\n## Out of scope\n\n<!-- sdd:answer scope.2 -->\nBilling changes and live chat are excluded. Native mobile apps are deferred; the web app must work on mobile browsers.\n<!-- sdd:end -->\n\n## Functional requirements and priorities\n\n<!-- sdd:answer scope.3 -->\n| ID | Requirement | Priority | Acceptance criteria |\n| --- | --- | --- | --- |\n| REQ-001 | Customers submit a request with up to 5 attachments | Must | Request receives an ID within 2 seconds |\n| REQ-002 | Customers see only their organization’s requests | Must | Cross-organization access returns 404 |\n| REQ-003 | Customers see a timeline of status changes and replies | Must | Timeline updates within 5 seconds of a reply |\n| REQ-004 | Agents reply to requests from a triage queue | Must | Reply visible to the customer within 5 seconds |\n| REQ-005 | Customers receive an email when a request changes status | Should | Email sent within 2 minutes for 99% of changes |\n| REQ-006 | All screens meet WCAG 2.2 AA | Must | No serious axe violations; manual NVDA pass |\n<!-- sdd:end -->\n\n## Acceptance criteria\n\n<!-- sdd:answer scope.4 -->\nGiven a signed-in customer, when they submit a valid request, then it appears in their timeline with an ID within 2 seconds. Given a customer of organization A, when they open a request of organization B, then the API returns 404 and the attempt is audited.\n<!-- sdd:end -->\n\n## Dependencies\n\n<!-- sdd:answer scope.5 -->\nIdentity team registers the OIDC client (week 1). Email delivery account approved by Procurement (week 3).\n<!-- sdd:end -->\n\n## Assumptions to validate\n\n<!-- sdd:answer scope.6 -->\nAttachments rarely exceed 10 MB — confirm from last quarter’s mailbox. Agents prefer a single queue over per-product queues — confirm in the pilot.\n<!-- sdd:end -->\n\n## Release milestones\n\n<!-- sdd:answer scope.7 -->\nPilot with 3 customers on June 15 (all Must requirements pass). General availability on August 1 after the pilot review.\n<!-- sdd:end -->\n",
+        "diagram": "flowchart LR\n  subgraph included[In scope]\n    submit[Submit request] --> track[Track status]\n  end\n  subgraph excluded[Out of scope]\n    billing[Billing changes]\n  end",
+        "answers": {
+          "scope.1": {
+            "value": "Sign-in through company SSO, request creation with attachments, request timeline, support replies, email notifications and an agent triage queue.",
+            "state": "answered",
+            "reason": ""
+          },
+          "scope.2": {
+            "value": "Billing changes and live chat are excluded. Native mobile apps are deferred; the web app must work on mobile browsers.",
+            "state": "answered",
+            "reason": ""
+          },
+          "scope.3": {
+            "value": "[[\"REQ-001\",\"Customers submit a request with up to 5 attachments\",\"Must\",\"Request receives an ID within 2 seconds\"],[\"REQ-002\",\"Customers see only their organization’s requests\",\"Must\",\"Cross-organization access returns 404\"],[\"REQ-003\",\"Customers see a timeline of status changes and replies\",\"Must\",\"Timeline updates within 5 seconds of a reply\"],[\"REQ-004\",\"Agents reply to requests from a triage queue\",\"Must\",\"Reply visible to the customer within 5 seconds\"],[\"REQ-005\",\"Customers receive an email when a request changes status\",\"Should\",\"Email sent within 2 minutes for 99% of changes\"],[\"REQ-006\",\"All screens meet WCAG 2.2 AA\",\"Must\",\"No serious axe violations; manual NVDA pass\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "scope.4": {
+            "value": "Given a signed-in customer, when they submit a valid request, then it appears in their timeline with an ID within 2 seconds. Given a customer of organization A, when they open a request of organization B, then the API returns 404 and the attempt is audited.",
+            "state": "answered",
+            "reason": ""
+          },
+          "scope.5": {
+            "value": "Identity team registers the OIDC client (week 1). Email delivery account approved by Procurement (week 3).",
+            "state": "answered",
+            "reason": ""
+          },
+          "scope.6": {
+            "value": "Attachments rarely exceed 10 MB — confirm from last quarter’s mailbox. Agents prefer a single queue over per-product queues — confirm in the pilot.",
+            "state": "answered",
+            "reason": ""
+          },
+          "scope.7": {
+            "value": "Pilot with 3 customers on June 15 (all Must requirements pass). General availability on August 1 after the pilot review.",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "scope-ref-1",
+            "title": "ISO/IEC/IEEE 29148 — Requirements engineering",
+            "url": "https://www.iso.org/standard/72089.html",
+            "kind": "official"
+          },
+          {
+            "id": "scope-ref-2",
+            "title": "INVEST criteria (Agile Alliance)",
+            "url": "https://www.agilealliance.org/glossary/invest/",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "workflows",
+        "markdown": "# Users & workflows\n\nFollow the journey, including its exceptions.\n\n## Actors and permissions\n\n<!-- sdd:answer workflows.1 -->\n| Actor | May do | May not do |\n| --- | --- | --- |\n| Customer | Create and view own organization’s requests; reply | See other organizations; change status |\n| Support agent | View queues, reply, change status | Change organization settings |\n| Administrator | Manage organizations, users and settings | Read request content without an assignment |\n<!-- sdd:end -->\n\n## Primary user journey\n\n<!-- sdd:answer workflows.2 -->\n1. Customer signs in with SSO. 2. Opens “New request”. 3. Describes the issue and attaches files. 4. Submits. 5. Sees the request ID and status “Submitted”. 6. Receives an email when an agent replies.\n<!-- sdd:end -->\n\n## Use cases and triggers\n\n<!-- sdd:answer workflows.3 -->\n| ID | Use case | Actor | Trigger | Outcome |\n| --- | --- | --- | --- | --- |\n| UC-001 | Submit a request | Customer | New issue | Request tracked with an ID |\n| UC-002 | Follow a request | Customer | Status question | Current status and history visible |\n| UC-003 | Triage and reply | Support agent | New request in queue | Customer receives a reply |\n<!-- sdd:end -->\n\n## Business rules\n\n<!-- sdd:answer workflows.4 -->\nBR-01: A closed request can be reopened only within 14 days. BR-02: Attachments are limited to 5 files of 10 MB each. BR-03: Only agents change status.\n<!-- sdd:end -->\n\n## Error and exception paths\n\n<!-- sdd:answer workflows.5 -->\nAttachment upload fails: keep the draft, show which file failed, allow retry. Session expires: preserve the draft locally and ask the user to sign in again. Email provider down: queue notifications for 24 hours.\n<!-- sdd:end -->\n\n## States and transitions\n\n<!-- sdd:answer workflows.6 -->\nDraft → Submitted (customer) → In progress (agent) → Resolved (agent) → Closed after 14 days; Submitted → Rejected (agent, with reason).\n<!-- sdd:end -->\n\n## Accessibility needs\n\n<!-- sdd:answer workflows.7 -->\nThe full request journey works with keyboard and NVDA; no step has a time limit; error messages name the field and the fix.\n<!-- sdd:end -->\n",
+        "diagram": "flowchart TD\n  start([Customer starts]) --> fill[Complete request form]\n  fill --> valid{Valid?}\n  valid -- yes --> submit[Submit request]\n  valid -- no --> fix[Show field errors]\n  fix --> fill\n  submit --> done([Request tracked])",
+        "answers": {
+          "workflows.1": {
+            "value": "[[\"Customer\",\"Create and view own organization’s requests; reply\",\"See other organizations; change status\"],[\"Support agent\",\"View queues, reply, change status\",\"Change organization settings\"],[\"Administrator\",\"Manage organizations, users and settings\",\"Read request content without an assignment\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "workflows.2": {
+            "value": "1. Customer signs in with SSO. 2. Opens “New request”. 3. Describes the issue and attaches files. 4. Submits. 5. Sees the request ID and status “Submitted”. 6. Receives an email when an agent replies.",
+            "state": "answered",
+            "reason": ""
+          },
+          "workflows.3": {
+            "value": "[[\"UC-001\",\"Submit a request\",\"Customer\",\"New issue\",\"Request tracked with an ID\"],[\"UC-002\",\"Follow a request\",\"Customer\",\"Status question\",\"Current status and history visible\"],[\"UC-003\",\"Triage and reply\",\"Support agent\",\"New request in queue\",\"Customer receives a reply\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "workflows.4": {
+            "value": "BR-01: A closed request can be reopened only within 14 days. BR-02: Attachments are limited to 5 files of 10 MB each. BR-03: Only agents change status.",
+            "state": "answered",
+            "reason": ""
+          },
+          "workflows.5": {
+            "value": "Attachment upload fails: keep the draft, show which file failed, allow retry. Session expires: preserve the draft locally and ask the user to sign in again. Email provider down: queue notifications for 24 hours.",
+            "state": "answered",
+            "reason": ""
+          },
+          "workflows.6": {
+            "value": "Draft → Submitted (customer) → In progress (agent) → Resolved (agent) → Closed after 14 days; Submitted → Rejected (agent, with reason).",
+            "state": "answered",
+            "reason": ""
+          },
+          "workflows.7": {
+            "value": "The full request journey works with keyboard and NVDA; no step has a time limit; error messages name the field and the fix.",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "workflows-ref-1",
+            "title": "Mermaid state diagrams",
+            "url": "https://mermaid.js.org/syntax/stateDiagram.html",
+            "kind": "official"
+          },
+          {
+            "id": "workflows-ref-2",
+            "title": "OMG UML specification",
+            "url": "https://www.omg.org/spec/UML/",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "architecture",
+        "markdown": "# Architecture & ADRs\n\nMake the reasoning behind decisions visible.\n\n## System boundaries\n\n<!-- sdd:answer architecture.1 -->\nInside: web app, request API, notification worker, PostgreSQL. External: corporate identity provider (OIDC) and email delivery service.\n<!-- sdd:end -->\n\n## Components and responsibilities\n\n<!-- sdd:answer architecture.2 -->\n| Component | Responsibility | Technology |\n| --- | --- | --- |\n| CMP-001 Web app | Customer and agent interface | React, TypeScript |\n| CMP-002 Request API | Validation, authorization, persistence | Node.js, Fastify |\n| CMP-003 Notification worker | Sends status emails from a durable queue | Node.js |\n| CMP-004 Request store | Requests, timelines, attachments | PostgreSQL (JSONB) with S3-compatible object storage for attachments |\n<!-- sdd:end -->\n\n## Integration contracts\n\n<!-- sdd:answer architecture.3 -->\nIdentity provider: OIDC authorization code with PKCE. Email service: HTTPS JSON API, API key in the vault, 5 s timeout, 3 retries with backoff, failures queued for 24 hours.\n<!-- sdd:end -->\n\n## Deployment topology\n\n<!-- sdd:answer architecture.4 -->\nTwo API containers and one worker behind the company TLS ingress in the Canada Central region; managed PostgreSQL with a standby replica in the same region.\n<!-- sdd:end -->\n\n## Alternatives and tradeoffs\n\n<!-- sdd:answer architecture.5 -->\n| Option | Strengths | Weaknesses | Decision |\n| --- | --- | --- | --- |\n| Modular monolith | Simple deploys, one codebase | Coarse scaling | Chosen (ADR-001) |\n| Microservices | Independent scaling | Operational overhead for a team of 3 | Rejected |\n<!-- sdd:end -->\n\n## Architecture decisions and rationale\n\n<!-- sdd:answer architecture.6 -->\nADR-001 Modular monolith for release 1. ADR-002 PostgreSQL for requests, object storage for attachments. ADR-003 Durable job queue in PostgreSQL for notifications.\n<!-- sdd:end -->\n\n## Component ownership\n\n<!-- sdd:answer architecture.7 -->\nWeb app, API and worker: Platform Engineering. Email templates: Customer Experience.\n<!-- sdd:end -->\n\n## Frontend components\n\n<!-- sdd:answer architecture.9 -->\n| Component | Responsibility | State / data | Technology |\n| --- | --- | --- | --- |\n| App shell and navigation | Layout, routing, sign-in state | Session from /auth/me | React 19 |\n| Request list and detail pages | Find, filter and follow requests | Server state via query cache | React 19 |\n| New request form | Capture issue and attachments | Local form state, autosave draft | React 19 |\n<!-- sdd:end -->\n\n## Backend components\n\n<!-- sdd:answer architecture.10 -->\n| Component | Responsibility | Interfaces | Technology |\n| --- | --- | --- | --- |\n| Request API | Validation, authorization, persistence | REST /api/v1 (OpenAPI 3.1) | Node.js 24, Fastify 5 |\n| Notification worker | Send status emails with retries | Job queue in PostgreSQL | Node.js 24 |\n<!-- sdd:end -->\n",
+        "diagram": "flowchart LR\n  user([Customer]) -->|uses| system[Customer portal]\n  agent([Support agent]) -->|manages requests| system\n  system -->|authenticates via| idp[(Identity provider)]\n  system -->|sends email via| mail[Email service]",
+        "answers": {
+          "architecture.1": {
+            "value": "Inside: web app, request API, notification worker, PostgreSQL. External: corporate identity provider (OIDC) and email delivery service.",
+            "state": "answered",
+            "reason": ""
+          },
+          "architecture.2": {
+            "value": "[[\"CMP-001 Web app\",\"Customer and agent interface\",\"React, TypeScript\"],[\"CMP-002 Request API\",\"Validation, authorization, persistence\",\"Node.js, Fastify\"],[\"CMP-003 Notification worker\",\"Sends status emails from a durable queue\",\"Node.js\"],[\"CMP-004 Request store\",\"Requests, timelines, attachments\",\"PostgreSQL (JSONB) with S3-compatible object storage for attachments\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "architecture.3": {
+            "value": "Identity provider: OIDC authorization code with PKCE. Email service: HTTPS JSON API, API key in the vault, 5 s timeout, 3 retries with backoff, failures queued for 24 hours.",
+            "state": "answered",
+            "reason": ""
+          },
+          "architecture.4": {
+            "value": "Two API containers and one worker behind the company TLS ingress in the Canada Central region; managed PostgreSQL with a standby replica in the same region.",
+            "state": "answered",
+            "reason": ""
+          },
+          "architecture.5": {
+            "value": "[[\"Modular monolith\",\"Simple deploys, one codebase\",\"Coarse scaling\",\"Chosen (ADR-001)\"],[\"Microservices\",\"Independent scaling\",\"Operational overhead for a team of 3\",\"Rejected\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "architecture.6": {
+            "value": "ADR-001 Modular monolith for release 1. ADR-002 PostgreSQL for requests, object storage for attachments. ADR-003 Durable job queue in PostgreSQL for notifications.",
+            "state": "answered",
+            "reason": ""
+          },
+          "architecture.7": {
+            "value": "Web app, API and worker: Platform Engineering. Email templates: Customer Experience.",
+            "state": "answered",
+            "reason": ""
+          },
+          "architecture.9": {
+            "value": "[[\"App shell and navigation\",\"Layout, routing, sign-in state\",\"Session from /auth/me\",\"React 19\"],[\"Request list and detail pages\",\"Find, filter and follow requests\",\"Server state via query cache\",\"React 19\"],[\"New request form\",\"Capture issue and attachments\",\"Local form state, autosave draft\",\"React 19\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "architecture.10": {
+            "value": "[[\"Request API\",\"Validation, authorization, persistence\",\"REST /api/v1 (OpenAPI 3.1)\",\"Node.js 24, Fastify 5\"],[\"Notification worker\",\"Send status emails with retries\",\"Job queue in PostgreSQL\",\"Node.js 24\"]]",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "architecture-ref-1",
+            "title": "C4 model",
+            "url": "https://c4model.com/",
+            "kind": "official"
+          },
+          {
+            "id": "architecture-ref-2",
+            "title": "arc42 architecture template",
+            "url": "https://arc42.org/",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "data",
+        "markdown": "# Data & APIs\n\nDescribe the information the system depends on.\n\n## Entities and relationships\n\n<!-- sdd:answer data.1 -->\nOrganization 1–n Customer; Customer 1–n Request; Request 1–n TimelineEntry; Request 1–n Attachment. Request IDs are opaque UUIDs; the organizationId is on every request.\n<!-- sdd:end -->\n\n## API contracts and versioning\n\n<!-- sdd:answer data.2 -->\nREST JSON under /api/v1 described with OpenAPI 3.1. Breaking changes ship as /api/v2 with 6 months of overlap.\n<!-- sdd:end -->\n\n## Events and delivery guarantees\n\n<!-- sdd:answer data.3 -->\nRequestStatusChanged is delivered at least once to the notification worker; the worker deduplicates by requestId and status.\n<!-- sdd:end -->\n\n## Validation and error contracts\n\n<!-- sdd:answer data.4 -->\nEvery request body is validated with shared JSON Schemas on the server. Errors use RFC 9457 problem details with field paths.\n<!-- sdd:end -->\n\n## Retention and deletion\n\n<!-- sdd:answer data.5 -->\nClosed requests kept 3 years, then anonymized. Attachments deleted after 1 year. Backups expire after 35 days.\n<!-- sdd:end -->\n\n## Schema migrations\n\n<!-- sdd:answer data.6 -->\nVersioned migration scripts run before deployment using expand/contract: add fields, switch code, remove old fields one release later.\n<!-- sdd:end -->\n\n## Interoperability and import/export\n\n<!-- sdd:answer data.7 -->\nCSV export of requests for reporting (lossy). JSON export and import of an organization’s data (lossless, schema-validated).\n<!-- sdd:end -->\n\n## Communication styles\n\n<!-- sdd:answer data.10 -->\n- Synchronous REST over HTTP\n- Asynchronous message queue\n<!-- sdd:end -->\n\n## Contract languages\n\n<!-- sdd:answer data.11 -->\n- OpenAPI\n- JSON Schema\n<!-- sdd:end -->\n\n## Serialization formats\n\n<!-- sdd:answer data.12 -->\n- JSON\n- CSV\n<!-- sdd:end -->\n",
+        "diagram": "erDiagram\n  ORGANIZATION ||--o{ CUSTOMER : employs\n  CUSTOMER ||--o{ REQUEST : submits\n  REQUEST ||--o{ ATTACHMENT : includes\n  REQUEST {\n    string id\n    string status\n    datetime createdAt\n  }",
+        "answers": {
+          "data.1": {
+            "value": "Organization 1–n Customer; Customer 1–n Request; Request 1–n TimelineEntry; Request 1–n Attachment. Request IDs are opaque UUIDs; the organizationId is on every request.",
+            "state": "answered",
+            "reason": ""
+          },
+          "data.2": {
+            "value": "REST JSON under /api/v1 described with OpenAPI 3.1. Breaking changes ship as /api/v2 with 6 months of overlap.",
+            "state": "answered",
+            "reason": ""
+          },
+          "data.3": {
+            "value": "RequestStatusChanged is delivered at least once to the notification worker; the worker deduplicates by requestId and status.",
+            "state": "answered",
+            "reason": ""
+          },
+          "data.4": {
+            "value": "Every request body is validated with shared JSON Schemas on the server. Errors use RFC 9457 problem details with field paths.",
+            "state": "answered",
+            "reason": ""
+          },
+          "data.5": {
+            "value": "Closed requests kept 3 years, then anonymized. Attachments deleted after 1 year. Backups expire after 35 days.",
+            "state": "answered",
+            "reason": ""
+          },
+          "data.6": {
+            "value": "Versioned migration scripts run before deployment using expand/contract: add fields, switch code, remove old fields one release later.",
+            "state": "answered",
+            "reason": ""
+          },
+          "data.7": {
+            "value": "CSV export of requests for reporting (lossy). JSON export and import of an organization’s data (lossless, schema-validated).",
+            "state": "answered",
+            "reason": ""
+          },
+          "data.10": {
+            "value": "[\"Synchronous REST over HTTP\",\"Asynchronous message queue\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "data.11": {
+            "value": "[\"OpenAPI\",\"JSON Schema\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "data.12": {
+            "value": "[\"JSON\",\"CSV\"]",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "data-ref-1",
+            "title": "OpenAPI Specification",
+            "url": "https://spec.openapis.org/oas/latest.html",
+            "kind": "official"
+          },
+          {
+            "id": "data-ref-2",
+            "title": "AsyncAPI Specification",
+            "url": "https://www.asyncapi.com/docs/reference/specification/latest",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "quality",
+        "markdown": "# Nonfunctional requirements\n\nTurn expectations into measurable targets.\n\n## Latency and throughput targets\n\n<!-- sdd:answer quality.1 -->\nRequest list p95 < 300 ms server time at 50 req/s. Pages interactive within 2.5 s on a mid-range laptop.\n<!-- sdd:end -->\n\n## Concurrency and capacity\n\n<!-- sdd:answer quality.2 -->\n250 concurrent sessions, 80 req/s peak, 50 GB of attachments in year one, with 2× headroom.\n<!-- sdd:end -->\n\n## Availability target\n\n<!-- sdd:answer quality.3 -->\n99.5% monthly during business hours (8:00–18:00 ET); maintenance announced 48 hours ahead.\n<!-- sdd:end -->\n\n## Accessibility standard\n\n<!-- sdd:answer quality.4 -->\nWCAG 2.2 AA for all screens; axe checks in CI; manual NVDA review before each release.\n<!-- sdd:end -->\n\n## Scaling strategy\n\n<!-- sdd:answer quality.5 -->\nAPI containers scale out at 70% CPU up to 6 instances; the database is the first bottleneck — review at 60% storage.\n<!-- sdd:end -->\n\n## Resilience and recovery targets\n\n<!-- sdd:answer quality.6 -->\nNotifications queue for 24 hours if email is down. Database RPO 15 minutes, RTO 2 hours.\n<!-- sdd:end -->\n\n## Maintainability requirements\n\n<!-- sdd:answer quality.7 -->\nDomain code ≥ 80% branch coverage; dependencies updated monthly; each module has a README with its contracts.\n<!-- sdd:end -->\n\n## Verification method for each target\n\n<!-- sdd:answer quality.8 -->\n| Target | Method | Tool | Frequency |\n| --- | --- | --- | --- |\n| p95 < 300 ms at 50 req/s | Load test | k6 | Before each release |\n| 99.5% availability | SLO monitoring | Prometheus | Continuous |\n| WCAG 2.2 AA | Automated and manual audit | axe, NVDA | Each release |\n<!-- sdd:end -->\n\n## Availability target\n\n<!-- sdd:answer quality.11 -->\n99.9 %\n<!-- sdd:end -->\n\n## Response time target (p95)\n\n<!-- sdd:answer quality.12 -->\n0.5 s\n<!-- sdd:end -->\n",
+        "diagram": "xychart-beta\n  title \"p95 latency budget (ms)\"\n  x-axis [Browser, API, Database, Rendering]\n  y-axis \"Milliseconds\" 0 --> 400\n  bar [120, 150, 60, 70]",
+        "answers": {
+          "quality.1": {
+            "value": "Request list p95 < 300 ms server time at 50 req/s. Pages interactive within 2.5 s on a mid-range laptop.",
+            "state": "answered",
+            "reason": ""
+          },
+          "quality.2": {
+            "value": "250 concurrent sessions, 80 req/s peak, 50 GB of attachments in year one, with 2× headroom.",
+            "state": "answered",
+            "reason": ""
+          },
+          "quality.3": {
+            "value": "99.5% monthly during business hours (8:00–18:00 ET); maintenance announced 48 hours ahead.",
+            "state": "answered",
+            "reason": ""
+          },
+          "quality.4": {
+            "value": "WCAG 2.2 AA for all screens; axe checks in CI; manual NVDA review before each release.",
+            "state": "answered",
+            "reason": ""
+          },
+          "quality.5": {
+            "value": "API containers scale out at 70% CPU up to 6 instances; the database is the first bottleneck — review at 60% storage.",
+            "state": "answered",
+            "reason": ""
+          },
+          "quality.6": {
+            "value": "Notifications queue for 24 hours if email is down. Database RPO 15 minutes, RTO 2 hours.",
+            "state": "answered",
+            "reason": ""
+          },
+          "quality.7": {
+            "value": "Domain code ≥ 80% branch coverage; dependencies updated monthly; each module has a README with its contracts.",
+            "state": "answered",
+            "reason": ""
+          },
+          "quality.8": {
+            "value": "[[\"p95 < 300 ms at 50 req/s\",\"Load test\",\"k6\",\"Before each release\"],[\"99.5% availability\",\"SLO monitoring\",\"Prometheus\",\"Continuous\"],[\"WCAG 2.2 AA\",\"Automated and manual audit\",\"axe, NVDA\",\"Each release\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "quality.11": {
+            "value": "99.9",
+            "state": "answered",
+            "reason": ""
+          },
+          "quality.12": {
+            "value": "0.5",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "quality-ref-1",
+            "title": "ISO/IEC 25010 — Product quality model",
+            "url": "https://iso25000.com/index.php/en/iso-25000-standards/iso-25010",
+            "kind": "official"
+          },
+          {
+            "id": "quality-ref-2",
+            "title": "Google SRE — Service Level Objectives",
+            "url": "https://sre.google/sre-book/service-level-objectives/",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "security",
+        "markdown": "# Security & privacy\n\nKnow what you protect and who can access it.\n\n## Assets and data classification\n\n<!-- sdd:answer security.1 -->\n| Asset | Classification | Owner | Location |\n| --- | --- | --- | --- |\n| Request content and attachments | Confidential | Customer Experience | PostgreSQL, object storage and backups |\n| User identities | Confidential | Platform Engineering | PostgreSQL |\n| Email API key | Restricted | Platform Engineering | Vault |\n<!-- sdd:end -->\n\n## Threat model and trust boundaries\n\n<!-- sdd:answer security.2 -->\nBrowser→API: session hijacking — HttpOnly SameSite cookies, origin checks. API→DB: cross-tenant reads — organization filter enforced in the data layer (RISK-002). Worker→Email: key leakage — key only in the vault.\n<!-- sdd:end -->\n\n## Authentication and session policy\n\n<!-- sdd:answer security.3 -->\nCorporate OIDC with MFA enforced by the IdP; 8-hour sessions in HttpOnly cookies; invitation-only provisioning.\n<!-- sdd:end -->\n\n## Role and permission matrix\n\n<!-- sdd:answer security.4 -->\n| Role | Allowed | Denied | Scope |\n| --- | --- | --- | --- |\n| Customer | Own organization’s requests | Status changes, other organizations | Organization |\n| Support agent | Assigned queues, replies, status | Organization settings | Assigned queues |\n| Administrator | Users and settings | Unassigned request content | Workspace |\n<!-- sdd:end -->\n\n## Secrets and key management\n\n<!-- sdd:answer security.5 -->\nSecrets in the cloud vault, injected at runtime, rotated every 90 days; secret scanning on every pull request.\n<!-- sdd:end -->\n\n## Encryption requirements\n\n<!-- sdd:answer security.6 -->\nTLS 1.2+ everywhere; storage encryption by the database service; the email API key is never stored in the database.\n<!-- sdd:end -->\n\n## Audit and incident evidence\n\n<!-- sdd:answer security.7 -->\nAudit role changes, exports, denied cross-organization access and settings changes with actor, time and target; keep 1 year.\n<!-- sdd:end -->\n\n## Privacy and applicable obligations\n\n<!-- sdd:answer security.8 -->\nCustomers in Québec and Ontario: Québec Law 25 and PIPEDA likely apply. Privacy officer confirms and completes a privacy impact assessment by week 4.\n<!-- sdd:end -->\n\n## Cookies and client-side storage\n\n<!-- sdd:answer security.11 -->\n- Session cookie (HttpOnly, Secure)\n- SameSite=Lax or Strict\n- CSRF protection\n- Preferences in local storage\n- No third-party cookies\n<!-- sdd:end -->\n\n## Multi-factor authentication\n\n<!-- sdd:answer security.12 -->\nYes\n<!-- sdd:end -->\n\n## Personal data processed\n\n<!-- sdd:answer security.13 -->\nYes\n<!-- sdd:end -->\n\n## Data classification\n\n<!-- sdd:answer security.14 -->\n| Item | Choice |\n| --- | --- |\n| Personal data | Confidential |\n| Credentials and secrets | Restricted |\n| Payment data | Not handled |\n| Business documents | Confidential |\n| Logs and telemetry | Internal |\n| Backups | Confidential |\n<!-- sdd:end -->\n",
+        "diagram": "flowchart LR\n  subgraph internet[Untrusted: Internet]\n    browser[Browser]\n  end\n  subgraph zone[Trusted: Application zone]\n    api[API] --> db[(Database)]\n  end\n  subgraph ext[External providers]\n    idp[Identity provider]\n  end\n  browser -->|HTTPS and session cookie| api\n  api -->|OIDC| idp",
+        "answers": {
+          "security.1": {
+            "value": "[[\"Request content and attachments\",\"Confidential\",\"Customer Experience\",\"PostgreSQL, object storage and backups\"],[\"User identities\",\"Confidential\",\"Platform Engineering\",\"PostgreSQL\"],[\"Email API key\",\"Restricted\",\"Platform Engineering\",\"Vault\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "security.2": {
+            "value": "Browser→API: session hijacking — HttpOnly SameSite cookies, origin checks. API→DB: cross-tenant reads — organization filter enforced in the data layer (RISK-002). Worker→Email: key leakage — key only in the vault.",
+            "state": "answered",
+            "reason": ""
+          },
+          "security.3": {
+            "value": "Corporate OIDC with MFA enforced by the IdP; 8-hour sessions in HttpOnly cookies; invitation-only provisioning.",
+            "state": "answered",
+            "reason": ""
+          },
+          "security.4": {
+            "value": "[[\"Customer\",\"Own organization’s requests\",\"Status changes, other organizations\",\"Organization\"],[\"Support agent\",\"Assigned queues, replies, status\",\"Organization settings\",\"Assigned queues\"],[\"Administrator\",\"Users and settings\",\"Unassigned request content\",\"Workspace\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "security.5": {
+            "value": "Secrets in the cloud vault, injected at runtime, rotated every 90 days; secret scanning on every pull request.",
+            "state": "answered",
+            "reason": ""
+          },
+          "security.6": {
+            "value": "TLS 1.2+ everywhere; storage encryption by the database service; the email API key is never stored in the database.",
+            "state": "answered",
+            "reason": ""
+          },
+          "security.7": {
+            "value": "Audit role changes, exports, denied cross-organization access and settings changes with actor, time and target; keep 1 year.",
+            "state": "answered",
+            "reason": ""
+          },
+          "security.8": {
+            "value": "Customers in Québec and Ontario: Québec Law 25 and PIPEDA likely apply. Privacy officer confirms and completes a privacy impact assessment by week 4.",
+            "state": "answered",
+            "reason": ""
+          },
+          "security.11": {
+            "value": "[\"Session cookie (HttpOnly, Secure)\",\"SameSite=Lax or Strict\",\"CSRF protection\",\"Preferences in local storage\",\"No third-party cookies\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "security.12": {
+            "value": "yes",
+            "state": "answered",
+            "reason": ""
+          },
+          "security.13": {
+            "value": "yes",
+            "state": "answered",
+            "reason": ""
+          },
+          "security.14": {
+            "value": "{\"Personal data\":\"Confidential\",\"Credentials and secrets\":\"Restricted\",\"Payment data\":\"Not handled\",\"Business documents\":\"Confidential\",\"Logs and telemetry\":\"Internal\",\"Backups\":\"Confidential\"}",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "security-ref-1",
+            "title": "OWASP Application Security Verification Standard",
+            "url": "https://owasp.org/www-project-application-security-verification-standard/",
+            "kind": "official"
+          },
+          {
+            "id": "security-ref-2",
+            "title": "OWASP Threat Modeling",
+            "url": "https://owasp.org/www-community/Threat_Modeling",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "design",
+        "markdown": "# UX & design system\n\nMake the experience coherent and accessible.\n\n## Navigation and information architecture\n\n<!-- sdd:answer design.1 -->\nLeft navigation with Requests, Knowledge base and Settings; each request has a shareable URL; breadcrumbs on detail pages.\n<!-- sdd:end -->\n\n## Screen inventory\n\n<!-- sdd:answer design.2 -->\n| Screen | Purpose | Primary action | Use case |\n| --- | --- | --- | --- |\n| Request list | Find requests | Filter and open | UC-002 |\n| New request | Capture an issue | Submit | UC-001 |\n| Request detail | Follow and reply | Reply | UC-002, UC-003 |\n| Triage queue | Assign and answer | Reply | UC-003 |\n<!-- sdd:end -->\n\n## Components and interaction states\n\n<!-- sdd:answer design.3 -->\nButton, text field, file drop zone, status badge, timeline, data table, dialog — each with default, hover, focus-visible, loading, empty, error and disabled states. Built on shadcn/ui primitives.\n<!-- sdd:end -->\n\n## Color and typography tokens\n\n<!-- sdd:answer design.4 -->\nColor roles surface, text, muted, accent, danger, success; body 16 px / 1.5; 4 px spacing scale; light and dark themes with at least 4.5:1 text contrast.\n<!-- sdd:end -->\n\n## Responsive behavior\n\n<!-- sdd:answer design.5 -->\nBelow 768 px the navigation becomes a menu button, tables become cards and touch targets are at least 44 px. Supports 200% zoom.\n<!-- sdd:end -->\n\n## Keyboard and assistive technology\n\n<!-- sdd:answer design.6 -->\nSkip link to main content; logical focus order; status changes announced in a polite live region; dialogs trap and restore focus; tested with NVDA and VoiceOver.\n<!-- sdd:end -->\n\n## UX validation plan\n\n<!-- sdd:answer design.7 -->\nClickable prototype tested with 5 customers; success = 4 of 5 submit a request unaided in under 3 minutes.\n<!-- sdd:end -->\n",
+        "diagram": "flowchart TD\n  home[Home] --> list[Request list]\n  list --> detail[Request detail]\n  list --> create[New request]\n  create --> detail\n  home --> settings[Settings]",
+        "answers": {
+          "design.1": {
+            "value": "Left navigation with Requests, Knowledge base and Settings; each request has a shareable URL; breadcrumbs on detail pages.",
+            "state": "answered",
+            "reason": ""
+          },
+          "design.2": {
+            "value": "[[\"Request list\",\"Find requests\",\"Filter and open\",\"UC-002\"],[\"New request\",\"Capture an issue\",\"Submit\",\"UC-001\"],[\"Request detail\",\"Follow and reply\",\"Reply\",\"UC-002, UC-003\"],[\"Triage queue\",\"Assign and answer\",\"Reply\",\"UC-003\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "design.3": {
+            "value": "Button, text field, file drop zone, status badge, timeline, data table, dialog — each with default, hover, focus-visible, loading, empty, error and disabled states. Built on shadcn/ui primitives.",
+            "state": "answered",
+            "reason": ""
+          },
+          "design.4": {
+            "value": "Color roles surface, text, muted, accent, danger, success; body 16 px / 1.5; 4 px spacing scale; light and dark themes with at least 4.5:1 text contrast.",
+            "state": "answered",
+            "reason": ""
+          },
+          "design.5": {
+            "value": "Below 768 px the navigation becomes a menu button, tables become cards and touch targets are at least 44 px. Supports 200% zoom.",
+            "state": "answered",
+            "reason": ""
+          },
+          "design.6": {
+            "value": "Skip link to main content; logical focus order; status changes announced in a polite live region; dialogs trap and restore focus; tested with NVDA and VoiceOver.",
+            "state": "answered",
+            "reason": ""
+          },
+          "design.7": {
+            "value": "Clickable prototype tested with 5 customers; success = 4 of 5 submit a request unaided in under 3 minutes.",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "design-ref-1",
+            "title": "WCAG 2.2",
+            "url": "https://www.w3.org/TR/WCAG22/",
+            "kind": "official"
+          },
+          {
+            "id": "design-ref-2",
+            "title": "WAI-ARIA Authoring Practices Guide",
+            "url": "https://www.w3.org/WAI/ARIA/apg/",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "technology",
+        "markdown": "# Technology & tooling\n\nChoose technology with evidence.\n\n## Selected frameworks and platforms\n\n<!-- sdd:answer technology.1 -->\n| Technology | Version | Purpose | Ring |\n| --- | --- | --- | --- |\n| TypeScript | 5.9 | All application code | Adopt |\n| React | 19 | Web interface | Adopt |\n| Fastify | 5 | HTTP API | Adopt |\n| PostgreSQL | 17 | Persistence and job queue | Adopt |\n| OpenTelemetry | 1.x | Tracing | Trial |\n<!-- sdd:end -->\n\n## Version and support policies\n\n<!-- sdd:answer technology.2 -->\nNode.js 24 LTS; PostgreSQL 17; dependencies updated monthly; critical security patches within 72 hours.\n<!-- sdd:end -->\n\n## Licenses and restrictions\n\n<!-- sdd:answer technology.3 -->\nAllowed: MIT, Apache-2.0, BSD-3-Clause, ISC. Review: MPL-2.0, LGPL. Forbidden in distributed code: AGPL. Checked in CI.\n<!-- sdd:end -->\n\n## Alternatives considered\n\n<!-- sdd:answer technology.4 -->\n| Option | Strengths | Weaknesses | Decision |\n| --- | --- | --- | --- |\n| PostgreSQL | Relational integrity, team experience | Migrations for flexible timeline entries | Not chosen (ADR-002) |\n| PostgreSQL | JSONB for flexible timelines, transactions, one database to operate | Schema migrations to plan | Chosen |\n<!-- sdd:end -->\n\n## Official and custom references\n\n<!-- sdd:answer technology.5 -->\nreact.dev (React 19), fastify.dev (v5), PostgreSQL 17 manual, internal “API error conventions” page.\n<!-- sdd:end -->\n\n## Development tooling\n\n<!-- sdd:answer technology.6 -->\npnpm workspaces, Prettier, ESLint, Vitest, Playwright; Claude Code and Copilot with repository instructions.\n<!-- sdd:end -->\n\n## Adoption rationale\n\n<!-- sdd:answer technology.7 -->\nTypeScript end to end lets the team share validation schemas between the interface and the API; one language keeps a team of 3 productive.\n<!-- sdd:end -->\n\n## Approved usage and restrictions\n\n<!-- sdd:answer technology.8 -->\nHosted AI providers may be used for drafting documentation only; never with customer request content.\n<!-- sdd:end -->\n",
+        "diagram": "flowchart LR\n  subgraph adopt[Adopt]\n    ts[TypeScript]\n    react[React]\n  end\n  subgraph trial[Trial]\n    otel[OpenTelemetry]\n  end\n  subgraph assess[Assess]\n    agents[Coding agents]\n  end\n  subgraph hold[Hold]\n    legacy[Legacy ORM]\n  end",
+        "answers": {
+          "technology.1": {
+            "value": "[[\"TypeScript\",\"5.9\",\"All application code\",\"Adopt\"],[\"React\",\"19\",\"Web interface\",\"Adopt\"],[\"Fastify\",\"5\",\"HTTP API\",\"Adopt\"],[\"PostgreSQL\",\"17\",\"Persistence and job queue\",\"Adopt\"],[\"OpenTelemetry\",\"1.x\",\"Tracing\",\"Trial\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "technology.2": {
+            "value": "Node.js 24 LTS; PostgreSQL 17; dependencies updated monthly; critical security patches within 72 hours.",
+            "state": "answered",
+            "reason": ""
+          },
+          "technology.3": {
+            "value": "Allowed: MIT, Apache-2.0, BSD-3-Clause, ISC. Review: MPL-2.0, LGPL. Forbidden in distributed code: AGPL. Checked in CI.",
+            "state": "answered",
+            "reason": ""
+          },
+          "technology.4": {
+            "value": "[[\"PostgreSQL\",\"Relational integrity, team experience\",\"Migrations for flexible timeline entries\",\"Not chosen (ADR-002)\"],[\"PostgreSQL\",\"JSONB for flexible timelines, transactions, one database to operate\",\"Schema migrations to plan\",\"Chosen\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "technology.5": {
+            "value": "react.dev (React 19), fastify.dev (v5), PostgreSQL 17 manual, internal “API error conventions” page.",
+            "state": "answered",
+            "reason": ""
+          },
+          "technology.6": {
+            "value": "pnpm workspaces, Prettier, ESLint, Vitest, Playwright; Claude Code and Copilot with repository instructions.",
+            "state": "answered",
+            "reason": ""
+          },
+          "technology.7": {
+            "value": "TypeScript end to end lets the team share validation schemas between the interface and the API; one language keeps a team of 3 productive.",
+            "state": "answered",
+            "reason": ""
+          },
+          "technology.8": {
+            "value": "Hosted AI providers may be used for drafting documentation only; never with customer request content.",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "technology-ref-1",
+            "title": "Thoughtworks Technology Radar",
+            "url": "https://www.thoughtworks.com/radar",
+            "kind": "official"
+          },
+          {
+            "id": "technology-ref-2",
+            "title": "SPDX License List",
+            "url": "https://spdx.org/licenses/",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "conventions",
+        "markdown": "# Engineering conventions\n\nGive contributors a shared vocabulary.\n\n## Naming and nomenclature\n\n<!-- sdd:answer conventions.1 -->\ncamelCase variables, PascalCase components, kebab-case files; “request” (not ticket or case) everywhere; identifiers REQ-, UC-, ADR-, CMP-, RISK-, TEST-.\n<!-- sdd:end -->\n\n## Repository and folder structure\n\n<!-- sdd:answer conventions.2 -->\napps/web, apps/api, packages/shared; unit tests beside code as *.test.ts; end-to-end tests in tests/e2e; specification in .plan/.\n<!-- sdd:end -->\n\n## Backend and frontend boundaries\n\n<!-- sdd:answer conventions.3 -->\nAuthorization and persistence only in apps/api; zod schemas in packages/shared; the web app never imports from apps/api.\n<!-- sdd:end -->\n\n## Lint and formatting rules\n\n<!-- sdd:answer conventions.4 -->\nPrettier (100 columns, single quotes) and ESLint with typescript-eslint; CI fails on any warning.\n<!-- sdd:end -->\n\n## Error handling conventions\n\n<!-- sdd:answer conventions.5 -->\nThrow HttpError with a status and a safe message; unexpected errors are logged server-side and return a generic message.\n<!-- sdd:end -->\n\n## Documentation conventions\n\n<!-- sdd:answer conventions.6 -->\nEvery pull request updates .plan/tasks.md and changes.md; architectural changes add an ADR.\n<!-- sdd:end -->\n\n## Do and do not examples\n\n<!-- sdd:answer conventions.7 -->\n| Do | Don’t | Why |\n| --- | --- | --- |\n| Validate with the shared schema | Hand-written checks in routes | One source of truth for contracts |\n| Filter by organizationId in the data layer | Filter in the UI only | Prevents cross-tenant leaks |\n<!-- sdd:end -->\n",
+        "diagram": "flowchart TD\n  root[repository] --> apps[apps]\n  root --> packages[packages]\n  root --> docs[docs]\n  apps --> web[web: user interface]\n  apps --> api[api: HTTP service]\n  packages --> shared[shared: schemas and domain]\n  web -.->|imports| shared\n  api -.->|imports| shared",
+        "answers": {
+          "conventions.1": {
+            "value": "camelCase variables, PascalCase components, kebab-case files; “request” (not ticket or case) everywhere; identifiers REQ-, UC-, ADR-, CMP-, RISK-, TEST-.",
+            "state": "answered",
+            "reason": ""
+          },
+          "conventions.2": {
+            "value": "apps/web, apps/api, packages/shared; unit tests beside code as *.test.ts; end-to-end tests in tests/e2e; specification in .plan/.",
+            "state": "answered",
+            "reason": ""
+          },
+          "conventions.3": {
+            "value": "Authorization and persistence only in apps/api; zod schemas in packages/shared; the web app never imports from apps/api.",
+            "state": "answered",
+            "reason": ""
+          },
+          "conventions.4": {
+            "value": "Prettier (100 columns, single quotes) and ESLint with typescript-eslint; CI fails on any warning.",
+            "state": "answered",
+            "reason": ""
+          },
+          "conventions.5": {
+            "value": "Throw HttpError with a status and a safe message; unexpected errors are logged server-side and return a generic message.",
+            "state": "answered",
+            "reason": ""
+          },
+          "conventions.6": {
+            "value": "Every pull request updates .plan/tasks.md and changes.md; architectural changes add an ADR.",
+            "state": "answered",
+            "reason": ""
+          },
+          "conventions.7": {
+            "value": "[[\"Validate with the shared schema\",\"Hand-written checks in routes\",\"One source of truth for contracts\"],[\"Filter by organizationId in the data layer\",\"Filter in the UI only\",\"Prevents cross-tenant leaks\"]]",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "conventions-ref-1",
+            "title": "Conventional Commits",
+            "url": "https://www.conventionalcommits.org/",
+            "kind": "official"
+          },
+          {
+            "id": "conventions-ref-2",
+            "title": "Semantic Versioning",
+            "url": "https://semver.org/",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "testing",
+        "markdown": "# Testing & quality\n\nConnect every important promise to a test.\n\n## Test pyramid and ownership\n\n<!-- sdd:answer testing.1 -->\nUnit tests for domain rules (developers, < 30 s); API integration tests against PostgreSQL (< 3 min); 5 end-to-end journeys (QA lead).\n<!-- sdd:end -->\n\n## Unit test boundaries\n\n<!-- sdd:answer testing.2 -->\nState transitions, permission checks and validation; no mocks of our own domain code; 80% branch coverage for packages/shared.\n<!-- sdd:end -->\n\n## Integration and contract tests\n\n<!-- sdd:answer testing.3 -->\nAPI tests run against PostgreSQL in Docker (Testcontainers); responses validated against the OpenAPI document; email provider replaced by a contract stub.\n<!-- sdd:end -->\n\n## End-to-end acceptance journeys\n\n<!-- sdd:answer testing.4 -->\nSign in → submit request → agent replies → customer sees reply (REQ-001, REQ-003, REQ-004); cross-organization access denied (REQ-002).\n<!-- sdd:end -->\n\n## Performance and security tests\n\n<!-- sdd:answer testing.5 -->\nk6 load test at 2× expected peak before release; dependency and secret scanning in CI; external penetration test before general availability.\n<!-- sdd:end -->\n\n## Accessibility tests\n\n<!-- sdd:answer testing.6 -->\naxe checks in every end-to-end test (no serious violations); manual NVDA pass on the three main journeys each release.\n<!-- sdd:end -->\n\n## Fixtures and test data\n\n<!-- sdd:answer testing.7 -->\nA seed script creates 3 organizations and 50 requests with synthetic names; each run uses a fresh database.\n<!-- sdd:end -->\n\n## Quality gates and release criteria\n\n<!-- sdd:answer testing.8 -->\nMerge: lint, typecheck, unit and integration tests, no high-severity vulnerabilities. Release: end-to-end suite green and product owner sign-off.\n<!-- sdd:end -->\n",
+        "diagram": "flowchart TB\n  e2e[End-to-end: few critical journeys]\n  integration[Integration and contract: real dependencies]\n  unit[Unit: domain rules, many and fast]\n  e2e --- integration\n  integration --- unit",
+        "answers": {
+          "testing.1": {
+            "value": "Unit tests for domain rules (developers, < 30 s); API integration tests against PostgreSQL (< 3 min); 5 end-to-end journeys (QA lead).",
+            "state": "answered",
+            "reason": ""
+          },
+          "testing.2": {
+            "value": "State transitions, permission checks and validation; no mocks of our own domain code; 80% branch coverage for packages/shared.",
+            "state": "answered",
+            "reason": ""
+          },
+          "testing.3": {
+            "value": "API tests run against PostgreSQL in Docker (Testcontainers); responses validated against the OpenAPI document; email provider replaced by a contract stub.",
+            "state": "answered",
+            "reason": ""
+          },
+          "testing.4": {
+            "value": "Sign in → submit request → agent replies → customer sees reply (REQ-001, REQ-003, REQ-004); cross-organization access denied (REQ-002).",
+            "state": "answered",
+            "reason": ""
+          },
+          "testing.5": {
+            "value": "k6 load test at 2× expected peak before release; dependency and secret scanning in CI; external penetration test before general availability.",
+            "state": "answered",
+            "reason": ""
+          },
+          "testing.6": {
+            "value": "axe checks in every end-to-end test (no serious violations); manual NVDA pass on the three main journeys each release.",
+            "state": "answered",
+            "reason": ""
+          },
+          "testing.7": {
+            "value": "A seed script creates 3 organizations and 50 requests with synthetic names; each run uses a fresh database.",
+            "state": "answered",
+            "reason": ""
+          },
+          "testing.8": {
+            "value": "Merge: lint, typecheck, unit and integration tests, no high-severity vulnerabilities. Release: end-to-end suite green and product owner sign-off.",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "testing-ref-1",
+            "title": "The Practical Test Pyramid",
+            "url": "https://martinfowler.com/articles/practical-test-pyramid.html",
+            "kind": "official"
+          },
+          {
+            "id": "testing-ref-2",
+            "title": "OWASP Web Security Testing Guide",
+            "url": "https://owasp.org/www-project-web-security-testing-guide/",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "delivery",
+        "markdown": "# Delivery & environments\n\nMake delivery repeatable.\n\n## Development test and production environments\n\n<!-- sdd:answer delivery.1 -->\nLocal (Docker Compose, seed data); staging (production-like, synthetic data, team access); production (customer data, on-call access only).\n<!-- sdd:end -->\n\n## Environment configuration and secrets\n\n<!-- sdd:answer delivery.2 -->\n.env.example lists every variable; secrets come from the vault; the API refuses to start without required settings.\n<!-- sdd:end -->\n\n## CI/CD pipeline\n\n<!-- sdd:answer delivery.3 -->\nGitHub Actions: lint → tests → scans → image build → staging deploy → manual approval → rolling production deploy.\n<!-- sdd:end -->\n\n## Infrastructure and ownership\n\n<!-- sdd:answer delivery.4 -->\nKubernetes manifests in the platform-infra repository, reviewed by Platform Engineering.\n<!-- sdd:end -->\n\n## Docker installation\n\n<!-- sdd:answer delivery.5 -->\n`docker compose up -d` starts the app, worker and PostgreSQL; data persists in a named volume; the app waits for a healthy database.\n<!-- sdd:end -->\n\n## Non-Docker platform prerequisites\n\n<!-- sdd:answer delivery.6 -->\nNode.js 24 and pnpm on all platforms; PostgreSQL 17 via winget (Windows), Homebrew (macOS) or the official apt repository (Linux).\n<!-- sdd:end -->\n\n## Migration and rollback plan\n\n<!-- sdd:answer delivery.7 -->\nBack up before migration; deploy to 10% then 100%; roll back to the previous image tag if the error rate exceeds 2% for 5 minutes.\n<!-- sdd:end -->\n\n## Deployment targets\n\n<!-- sdd:answer delivery.9 -->\n- Kubernetes\n<!-- sdd:end -->\n\n## Cloud and virtualization providers\n\n<!-- sdd:answer delivery.10 -->\n- Microsoft Azure\n<!-- sdd:end -->\n\n## CI/CD platform\n\n<!-- sdd:answer delivery.11 -->\nGitHub Actions\n<!-- sdd:end -->\n\n## Pipeline stages\n\n<!-- sdd:answer delivery.12 -->\n- Lint and format check\n- Type check / compile\n- Unit tests\n- Integration tests\n- End-to-end tests\n- Dependency scan\n- Secret scan\n- Build artifact / image\n- Deploy to staging\n- Manual approval\n- Deploy to production\n- Smoke tests\n<!-- sdd:end -->\n\n## Infrastructure as code\n\n<!-- sdd:answer delivery.13 -->\nYes\n<!-- sdd:end -->\n\n## Server operating systems\n\n<!-- sdd:answer delivery.14 -->\n- Ubuntu LTS\n<!-- sdd:end -->\n\n## Infrastructure-as-code tools\n\n<!-- sdd:answer delivery.15 -->\n- Terraform\n- Helm\n<!-- sdd:end -->\n\n## State and locking\n\n<!-- sdd:answer delivery.16 -->\nRemote backend with locking (object storage)\n<!-- sdd:end -->\n\n## Infrastructure change workflow\n\n<!-- sdd:answer delivery.17 -->\n- Plan shown on every pull request\n- Approval required before apply\n- Apply only from the pipeline\n- Short-lived cloud credentials (OIDC federation)\n<!-- sdd:end -->\n\n## Drift detection\n\n<!-- sdd:answer delivery.18 -->\nYes\n<!-- sdd:end -->\n\n## Policy as code and IaC scanning\n\n<!-- sdd:answer delivery.19 -->\n- Checkov\n- Trivy (configuration scan)\n<!-- sdd:end -->\n",
+        "diagram": "flowchart LR\n  commit[Commit] --> checks[Lint and typecheck]\n  checks --> tests[Tests]\n  tests --> scan[Dependency and secret scan]\n  scan --> build[Build image]\n  build --> staging[Deploy to staging]\n  staging --> approve{Approval}\n  approve --> prod[Production]",
+        "answers": {
+          "delivery.1": {
+            "value": "Local (Docker Compose, seed data); staging (production-like, synthetic data, team access); production (customer data, on-call access only).",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.2": {
+            "value": ".env.example lists every variable; secrets come from the vault; the API refuses to start without required settings.",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.3": {
+            "value": "GitHub Actions: lint → tests → scans → image build → staging deploy → manual approval → rolling production deploy.",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.4": {
+            "value": "Kubernetes manifests in the platform-infra repository, reviewed by Platform Engineering.",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.5": {
+            "value": "`docker compose up -d` starts the app, worker and PostgreSQL; data persists in a named volume; the app waits for a healthy database.",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.6": {
+            "value": "Node.js 24 and pnpm on all platforms; PostgreSQL 17 via winget (Windows), Homebrew (macOS) or the official apt repository (Linux).",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.7": {
+            "value": "Back up before migration; deploy to 10% then 100%; roll back to the previous image tag if the error rate exceeds 2% for 5 minutes.",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.9": {
+            "value": "[\"Kubernetes\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.10": {
+            "value": "[\"Microsoft Azure\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.11": {
+            "value": "GitHub Actions",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.12": {
+            "value": "[\"Lint and format check\",\"Type check / compile\",\"Unit tests\",\"Integration tests\",\"End-to-end tests\",\"Dependency scan\",\"Secret scan\",\"Build artifact / image\",\"Deploy to staging\",\"Manual approval\",\"Deploy to production\",\"Smoke tests\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.13": {
+            "value": "yes",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.14": {
+            "value": "[\"Ubuntu LTS\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.15": {
+            "value": "[\"Terraform\",\"Helm\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.16": {
+            "value": "Remote backend with locking (object storage)",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.17": {
+            "value": "[\"Plan shown on every pull request\",\"Approval required before apply\",\"Apply only from the pipeline\",\"Short-lived cloud credentials (OIDC federation)\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.18": {
+            "value": "yes",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.19": {
+            "value": "[\"Checkov\",\"Trivy (configuration scan)\"]",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "delivery-ref-1",
+            "title": "The Twelve-Factor App",
+            "url": "https://12factor.net/",
+            "kind": "official"
+          },
+          {
+            "id": "delivery-ref-2",
+            "title": "Docker Compose",
+            "url": "https://docs.docker.com/compose/",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "operations",
+        "markdown": "# Operations & observability\n\nPlan for the day after launch.\n\n## SLIs SLOs and SLA targets\n\n<!-- sdd:answer operations.1 -->\nSLI: share of API requests returning < 500 within 1 s. SLO: 99.5% over 28 days. No external SLA in release 1.\n<!-- sdd:end -->\n\n## Logs metrics and traces\n\n<!-- sdd:answer operations.2 -->\nJSON logs with request IDs and redacted cookies; RED metrics per route; OpenTelemetry traces via OTLP; logs kept 30 days.\n<!-- sdd:end -->\n\n## Alerts and on-call ownership\n\n<!-- sdd:answer operations.3 -->\nPage on-call when the 1-hour SLO burn rate exceeds 14×; business-hours rotation of 3 engineers; every alert links to a runbook.\n<!-- sdd:end -->\n\n## Incident response and escalation\n\n<!-- sdd:answer operations.4 -->\nSEV1: all customers affected — incident commander paged, status page within 15 minutes, blameless review within 5 business days.\n<!-- sdd:end -->\n\n## Operational runbooks\n\n<!-- sdd:answer operations.5 -->\nRotate the email API key; restore from backup; drain and restart the worker; revoke a compromised session.\n<!-- sdd:end -->\n\n## Backup and restore verification\n\n<!-- sdd:answer operations.6 -->\nNightly backups plus point-in-time recovery; encrypted off-site copies; quarterly restore test into staging.\n<!-- sdd:end -->\n\n## Disaster recovery RPO and RTO\n\n<!-- sdd:answer operations.7 -->\nRegion outage: RPO 15 minutes, RTO 4 hours using restored backups in a secondary region; tested yearly.\n<!-- sdd:end -->\n\n## Operating cost and capacity review\n\n<!-- sdd:answer operations.8 -->\nMonthly cost review with Finance; alert at 80% of the hosting budget; quarterly capacity forecast.\n<!-- sdd:end -->\n\n## Around-the-clock on-call\n\n<!-- sdd:answer operations.11 -->\nNo\n<!-- sdd:end -->\n",
+        "diagram": "flowchart TD\n  alert[Alert fires] --> ack[On-call acknowledges]\n  ack --> sev{Severity?}\n  sev -- SEV1 --> incident[Declare incident and page commander]\n  sev -- SEV3 --> ticket[Create ticket]\n  incident --> mitigate[Mitigate]\n  mitigate --> review[Blameless review]",
+        "answers": {
+          "operations.1": {
+            "value": "SLI: share of API requests returning < 500 within 1 s. SLO: 99.5% over 28 days. No external SLA in release 1.",
+            "state": "answered",
+            "reason": ""
+          },
+          "operations.2": {
+            "value": "JSON logs with request IDs and redacted cookies; RED metrics per route; OpenTelemetry traces via OTLP; logs kept 30 days.",
+            "state": "answered",
+            "reason": ""
+          },
+          "operations.3": {
+            "value": "Page on-call when the 1-hour SLO burn rate exceeds 14×; business-hours rotation of 3 engineers; every alert links to a runbook.",
+            "state": "answered",
+            "reason": ""
+          },
+          "operations.4": {
+            "value": "SEV1: all customers affected — incident commander paged, status page within 15 minutes, blameless review within 5 business days.",
+            "state": "answered",
+            "reason": ""
+          },
+          "operations.5": {
+            "value": "Rotate the email API key; restore from backup; drain and restart the worker; revoke a compromised session.",
+            "state": "answered",
+            "reason": ""
+          },
+          "operations.6": {
+            "value": "Nightly backups plus point-in-time recovery; encrypted off-site copies; quarterly restore test into staging.",
+            "state": "answered",
+            "reason": ""
+          },
+          "operations.7": {
+            "value": "Region outage: RPO 15 minutes, RTO 4 hours using restored backups in a secondary region; tested yearly.",
+            "state": "answered",
+            "reason": ""
+          },
+          "operations.8": {
+            "value": "Monthly cost review with Finance; alert at 80% of the hosting budget; quarterly capacity forecast.",
+            "state": "answered",
+            "reason": ""
+          },
+          "operations.11": {
+            "value": "no",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "operations-ref-1",
+            "title": "OpenTelemetry documentation",
+            "url": "https://opentelemetry.io/docs/",
+            "kind": "official"
+          },
+          {
+            "id": "operations-ref-2",
+            "title": "Google SRE — Managing incidents",
+            "url": "https://sre.google/sre-book/managing-incidents/",
+            "kind": "official"
+          }
+        ]
+      },
+      {
+        "id": "governance",
+        "markdown": "# Governance & handoff\n\nMake responsibilities and next steps explicit.\n\n## RACI responsibilities\n\n<!-- sdd:answer governance.1 -->\n| Activity | Responsible | Accountable | Consulted | Informed |\n| --- | --- | --- | --- | --- |\n| Approve specification baseline | Tech lead | Customer Experience director | Security architect | Support Operations |\n| Release to production | Platform Engineering | Tech lead | Support Operations | Customers |\n| Operate on-call | Platform Engineering | Platform Engineering lead | Support Operations | Customer Experience |\n<!-- sdd:end -->\n\n## Reviewers and approvals\n\n<!-- sdd:answer governance.2 -->\nSecurity section: security architect. Operations: platform lead. Baseline approval: Customer Experience director and tech lead.\n<!-- sdd:end -->\n\n## Milestones and dependencies\n\n<!-- sdd:answer governance.3 -->\nPilot (June 15): REQ-001 to REQ-004 and REQ-006; depends on the OIDC client. General availability (August 1): all requirements.\n<!-- sdd:end -->\n\n## Readiness and unresolved decisions\n\n<!-- sdd:answer governance.4 -->\nEmail provider (SES or Postmark) — owner: tech lead — by week 2 — blocks REQ-005 only.\n<!-- sdd:end -->\n\n## Contributor onboarding\n\n<!-- sdd:answer governance.5 -->\nRead .plan/README.md and the conventions; run the Docker setup in under 30 minutes; first task tagged “good first issue”.\n<!-- sdd:end -->\n\n## Implementation tasks\n\n<!-- sdd:answer governance.6 -->\nTASK-01 Request submission API (REQ-001, TEST-001). TASK-02 Organization isolation (REQ-002, TEST-002). TASK-03 Timeline and replies (REQ-003, REQ-004, TEST-003).\n<!-- sdd:end -->\n\n## Coding-agent instructions\n\n<!-- sdd:answer governance.7 -->\nAlways run pnpm lint and pnpm test before finishing; keep REQ/ADR identifiers; update .plan records. Never weaken organization isolation, never edit an approved baseline, and never guess an open decision — report it.\n<!-- sdd:end -->\n\n## Project license\n\n<!-- sdd:answer governance.8 -->\nProprietary (all rights reserved)\n<!-- sdd:end -->\n\n## Distribution model\n\n<!-- sdd:answer governance.9 -->\nHosted service (SaaS)\n<!-- sdd:end -->\n\n## Allowed dependency licenses\n\n<!-- sdd:answer governance.10 -->\n- Permissive (MIT, BSD, Apache-2.0, ISC)\n- Weak copyleft (LGPL, MPL, EPL)\n<!-- sdd:end -->\n\n## License compliance in the pipeline\n\n<!-- sdd:answer governance.11 -->\nYes\n<!-- sdd:end -->\n\n## Specification persistence model\n\n<!-- sdd:answer governance.12 -->\nLiving specification (kept in sync, drift checked)\n<!-- sdd:end -->\n\n## Large feature decomposition\n\n<!-- sdd:answer governance.13 -->\nOne specification per epic or release\n<!-- sdd:end -->\n",
+        "diagram": "gantt\n  title Delivery milestones\n  dateFormat YYYY-MM-DD\n  section Specification\n  Baseline approved :done, spec, 2026-01-05, 14d\n  section Build\n  Pilot release :pilot, after spec, 45d\n  General availability :milestone, ga, after pilot, 0d",
+        "answers": {
+          "governance.1": {
+            "value": "[[\"Approve specification baseline\",\"Tech lead\",\"Customer Experience director\",\"Security architect\",\"Support Operations\"],[\"Release to production\",\"Platform Engineering\",\"Tech lead\",\"Support Operations\",\"Customers\"],[\"Operate on-call\",\"Platform Engineering\",\"Platform Engineering lead\",\"Support Operations\",\"Customer Experience\"]]",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.2": {
+            "value": "Security section: security architect. Operations: platform lead. Baseline approval: Customer Experience director and tech lead.",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.3": {
+            "value": "Pilot (June 15): REQ-001 to REQ-004 and REQ-006; depends on the OIDC client. General availability (August 1): all requirements.",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.4": {
+            "value": "Email provider (SES or Postmark) — owner: tech lead — by week 2 — blocks REQ-005 only.",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.5": {
+            "value": "Read .plan/README.md and the conventions; run the Docker setup in under 30 minutes; first task tagged “good first issue”.",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.6": {
+            "value": "TASK-01 Request submission API (REQ-001, TEST-001). TASK-02 Organization isolation (REQ-002, TEST-002). TASK-03 Timeline and replies (REQ-003, REQ-004, TEST-003).",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.7": {
+            "value": "Always run pnpm lint and pnpm test before finishing; keep REQ/ADR identifiers; update .plan records. Never weaken organization isolation, never edit an approved baseline, and never guess an open decision — report it.",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.8": {
+            "value": "Proprietary (all rights reserved)",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.9": {
+            "value": "Hosted service (SaaS)",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.10": {
+            "value": "[\"Permissive (MIT, BSD, Apache-2.0, ISC)\",\"Weak copyleft (LGPL, MPL, EPL)\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.11": {
+            "value": "yes",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.12": {
+            "value": "Living specification (kept in sync, drift checked)",
+            "state": "answered",
+            "reason": ""
+          },
+          "governance.13": {
+            "value": "One specification per epic or release",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": [
+          {
+            "id": "governance-ref-1",
+            "title": "AGENTS.md",
+            "url": "https://agents.md/",
+            "kind": "official"
+          },
+          {
+            "id": "governance-ref-2",
+            "title": "Claude Code memory and CLAUDE.md",
+            "url": "https://code.claude.com/docs/en/memory",
+            "kind": "official"
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "REQ-001",
+        "type": "requirement",
+        "title": "Customers submit a request with up to 5 attachments",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "Given a signed-in customer, when they submit a valid request, then it receives an ID within 2 seconds.",
+        "priority": "must",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "REQ-002",
+        "type": "requirement",
+        "title": "Customers see only their organization’s requests",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "Given a customer of organization A, when they request a record of organization B, then the API returns 404 and audits the attempt.",
+        "priority": "must",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "REQ-003",
+        "type": "requirement",
+        "title": "Customers see a timeline of status changes and replies",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "Timeline shows a new reply within 5 seconds.",
+        "priority": "must",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "REQ-004",
+        "type": "requirement",
+        "title": "Agents reply to requests from a triage queue",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "Given an agent, when they reply, then the customer sees it within 5 seconds.",
+        "priority": "must",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "REQ-005",
+        "type": "requirement",
+        "title": "Customers receive an email when a request changes status",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "99% of status emails are sent within 2 minutes.",
+        "priority": "should",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "REQ-006",
+        "type": "requirement",
+        "title": "All screens meet WCAG 2.2 AA",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "No serious axe violations in 5 end-to-end journeys; manual NVDA pass.",
+        "priority": "must",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "UC-001",
+        "type": "use-case",
+        "title": "Submit a request",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "UC-002",
+        "type": "use-case",
+        "title": "Follow a request",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "UC-003",
+        "type": "use-case",
+        "title": "Triage and reply",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "ADR-001",
+        "type": "decision",
+        "title": "Modular monolith for release 1",
+        "body": "Context: team of 3, one deployable preferred. Decision: single API service with modules. Consequences: coarse scaling; revisit if two modules need independent scaling.",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "ADR-002",
+        "type": "decision",
+        "title": "PostgreSQL for requests, object storage for attachments",
+        "body": "Context: flexible timeline entries and binary attachments. Decision: PostgreSQL 17 with JSONB timelines and a standby replica; attachments in S3-compatible object storage. Consequences: organization filter enforced in the data layer; schema migrations in the release pipeline.",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "ADR-003",
+        "type": "decision",
+        "title": "Durable notification jobs in PostgreSQL",
+        "body": "Context: email provider may be unavailable. Decision: leased jobs with retries in PostgreSQL (SELECT … FOR UPDATE SKIP LOCKED). Consequences: at-least-once delivery; consumers deduplicate.",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "CMP-001",
+        "type": "component",
+        "title": "Web app",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "CMP-002",
+        "type": "component",
+        "title": "Request API",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "CMP-003",
+        "type": "component",
+        "title": "Notification worker",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "CMP-004",
+        "type": "component",
+        "title": "Request store",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "RISK-001",
+        "type": "risk",
+        "title": "Low customer adoption",
+        "body": "Likelihood medium, impact high.",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "RISK-002",
+        "type": "risk",
+        "title": "Cross-organization data exposure",
+        "body": "Likelihood low, impact critical.",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "RISK-003",
+        "type": "risk",
+        "title": "Email provider outage delays notifications",
+        "body": "Likelihood medium, impact low.",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "TEST-001",
+        "type": "test",
+        "title": "API integration: submit request returns ID < 2 s",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "TEST-002",
+        "type": "test",
+        "title": "API integration: cross-organization access returns 404 and is audited",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "TEST-003",
+        "type": "test",
+        "title": "End-to-end: customer sees agent reply in timeline",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "TEST-004",
+        "type": "test",
+        "title": "End-to-end: agent replies from triage queue",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "TEST-005",
+        "type": "test",
+        "title": "Worker integration: status email queued and retried",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "TEST-006",
+        "type": "test",
+        "title": "Accessibility: axe checks on all journeys",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      },
+      {
+        "id": "TEST-007",
+        "type": "test",
+        "title": "Pilot usability study with 3 accounts",
+        "body": "",
+        "status": "accepted",
+        "acceptance": "",
+        "owner": "",
+        "needsReview": false
+      }
+    ],
+    "links": [
+      {
+        "id": "LINK-001",
+        "from": "TEST-001",
+        "to": "REQ-001",
+        "kind": "tests"
+      },
+      {
+        "id": "LINK-002",
+        "from": "TEST-002",
+        "to": "REQ-002",
+        "kind": "tests"
+      },
+      {
+        "id": "LINK-003",
+        "from": "TEST-003",
+        "to": "REQ-003",
+        "kind": "tests"
+      },
+      {
+        "id": "LINK-004",
+        "from": "TEST-004",
+        "to": "REQ-004",
+        "kind": "tests"
+      },
+      {
+        "id": "LINK-005",
+        "from": "TEST-005",
+        "to": "REQ-005",
+        "kind": "tests"
+      },
+      {
+        "id": "LINK-006",
+        "from": "TEST-006",
+        "to": "REQ-006",
+        "kind": "tests"
+      },
+      {
+        "id": "LINK-007",
+        "from": "UC-001",
+        "to": "REQ-001",
+        "kind": "satisfies"
+      },
+      {
+        "id": "LINK-008",
+        "from": "UC-002",
+        "to": "REQ-003",
+        "kind": "satisfies"
+      },
+      {
+        "id": "LINK-009",
+        "from": "UC-003",
+        "to": "REQ-004",
+        "kind": "satisfies"
+      },
+      {
+        "id": "LINK-010",
+        "from": "CMP-002",
+        "to": "REQ-001",
+        "kind": "implements"
+      },
+      {
+        "id": "LINK-011",
+        "from": "CMP-002",
+        "to": "REQ-002",
+        "kind": "implements"
+      },
+      {
+        "id": "LINK-012",
+        "from": "CMP-001",
+        "to": "REQ-003",
+        "kind": "implements"
+      },
+      {
+        "id": "LINK-013",
+        "from": "CMP-001",
+        "to": "REQ-006",
+        "kind": "implements"
+      },
+      {
+        "id": "LINK-014",
+        "from": "CMP-003",
+        "to": "REQ-005",
+        "kind": "implements"
+      },
+      {
+        "id": "LINK-015",
+        "from": "ADR-001",
+        "to": "CMP-002",
+        "kind": "decides"
+      },
+      {
+        "id": "LINK-016",
+        "from": "ADR-002",
+        "to": "CMP-004",
+        "kind": "decides"
+      },
+      {
+        "id": "LINK-017",
+        "from": "ADR-003",
+        "to": "CMP-003",
+        "kind": "decides"
+      },
+      {
+        "id": "LINK-018",
+        "from": "CMP-002",
+        "to": "CMP-004",
+        "kind": "depends-on"
+      },
+      {
+        "id": "LINK-019",
+        "from": "TEST-007",
+        "to": "RISK-001",
+        "kind": "mitigates"
+      },
+      {
+        "id": "LINK-020",
+        "from": "TEST-002",
+        "to": "RISK-002",
+        "kind": "mitigates"
+      },
+      {
+        "id": "LINK-021",
+        "from": "ADR-003",
+        "to": "RISK-003",
+        "kind": "mitigates"
+      }
+    ],
+    "technologyIds": [],
+    "technologyDecisions": {},
+    "stack": [],
+    "customQuestions": [],
+    "updatedAt": "2026-09-28T00:00:00.000Z",
+    "updatedBy": "fixtures"
+  },
+  "technologies": []
+}

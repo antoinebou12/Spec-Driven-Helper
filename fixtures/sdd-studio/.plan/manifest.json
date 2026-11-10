@@ -1,0 +1,122 @@
+{
+  "format": "sdd-studio-plan",
+  "version": 1,
+  "projectId": "00000000-0000-4000-8000-000000000002",
+  "revision": 1,
+  "boardCards": 208,
+  "generatedAt": "2026-09-28T00:00:00.000Z",
+  "files": [
+    {
+      "path": ".plan/backlog.md",
+      "sha256": "c9084b2ea73652b0709097ad937fecdb8b8bfe3ba7aaff07c4e1dd2019f390e6"
+    },
+    {
+      "path": ".plan/board-backlog.md",
+      "sha256": "7e6efd3a69e6495f887953c026e143ec98f64e76207064759f1d2cb2cee48f37"
+    },
+    {
+      "path": ".plan/board.json",
+      "sha256": "6e549ef3c34b62a60f7adcfbd77c3af2095d1ed9c9fad72c98f81b245894f3b6"
+    },
+    {
+      "path": ".plan/changes.md",
+      "sha256": "4490be95e26d26608f944260a31b7e34fc5a5fcb44bff7848d751788ff17fa3c"
+    },
+    {
+      "path": ".plan/conventions.md",
+      "sha256": "7b3f24c2d58fd48986ae0f85bbd0931d549cf72ddd4d8e3b6057b13001dd161b"
+    },
+    {
+      "path": ".plan/designs.md",
+      "sha256": "6fc004b2d33c61be528f5c1a5bb74df15c5ccc7881f4ddc49c9d56405e90bf77"
+    },
+    {
+      "path": ".plan/plan.md",
+      "sha256": "a5c15169f5b1158cb4fbc58b0ec387bef9c1ddb203c6d869effed097ece901a5"
+    },
+    {
+      "path": ".plan/readiness.md",
+      "sha256": "296d56797e7de9c573915ded6ef666012fbcc2f449d8952582970fdb09d2e7ca"
+    },
+    {
+      "path": ".plan/README.md",
+      "sha256": "b27d83c03f4029b8a0eaf23e16f152eca4d84ce53970bdd3f349295aa2148988"
+    },
+    {
+      "path": ".plan/security-checklist.md",
+      "sha256": "06bfc353707f8613360365747c7fa12ec0da703ca16a0695f6b8b96f0ed01df8"
+    },
+    {
+      "path": ".plan/spec/01-discovery.md",
+      "sha256": "a052baeeea453e3b291a13c8302b6aa4ef495a1159ea8400298a3742522badcb"
+    },
+    {
+      "path": ".plan/spec/02-scope.md",
+      "sha256": "f1ed19943e81ebddbdfb1d972e3f694e7154e890d9542a2a17013712a3d43f47"
+    },
+    {
+      "path": ".plan/spec/03-workflows.md",
+      "sha256": "f5439e7c1fdde4d508014b6c423f131941afeba5a89ae47bbb8d597e37a6b4ba"
+    },
+    {
+      "path": ".plan/spec/04-architecture.md",
+      "sha256": "1a55bd92e7af3521a32ed0b67e8b299395c3bff81a872700ce4ae8e499971a08"
+    },
+    {
+      "path": ".plan/spec/05-data.md",
+      "sha256": "dd7d4fa1741d0cc0de4ebd804c450f780a24a319a2ac67bec97f236a289a9c8e"
+    },
+    {
+      "path": ".plan/spec/06-quality.md",
+      "sha256": "b7ec6b9c3e61e665fdfddccfa383b64c36da12c4d19b05060327564ed22d1baa"
+    },
+    {
+      "path": ".plan/spec/07-security.md",
+      "sha256": "f968a323c42bcea70870525873269a065ead1c6d3334ed429ad587ceda8433b5"
+    },
+    {
+      "path": ".plan/spec/08-design.md",
+      "sha256": "e044cb759a4b17768974d6229a220ebe5197fb6737036f79a430c2a0aef65d27"
+    },
+    {
+      "path": ".plan/spec/09-technology.md",
+      "sha256": "40a7e51643797425f51884d16a5d909eea0f8fb3d519207f051be0088e2da85c"
+    },
+    {
+      "path": ".plan/spec/10-conventions.md",
+      "sha256": "35f9c79174fcd602874f5042f05d35e330bf4503f8f5726db5318d14c58a2370"
+    },
+    {
+      "path": ".plan/spec/11-testing.md",
+      "sha256": "cf727a6b388bc3c8c3803861ba44206ac941996b05a9d397256ed463e75dad09"
+    },
+    {
+      "path": ".plan/spec/12-delivery.md",
+      "sha256": "3916f1a3e0992fbe7a74704cba1a21ba055d88bd48243b43541b1dfcd8aeddaa"
+    },
+    {
+      "path": ".plan/spec/13-operations.md",
+      "sha256": "212c62547c1fd1e128b242f6aa154addb97cb966b6456809eb1af89be6ff4307"
+    },
+    {
+      "path": ".plan/spec/14-governance.md",
+      "sha256": "47b9c46b5eb150723b069d0fc9383109fd73abb410f98d217bc0ccfc3f2dd17a"
+    },
+    {
+      "path": ".plan/specification.json",
+      "sha256": "9ff2bba3c11a039dd95bc60c64da1cbb25de87d6436a51632780b374b9207d85"
+    },
+    {
+      "path": ".plan/specification.toon",
+      "sha256": "b92f2105805a9a498219dd3517bcc317bbe465e86631bb8afb2036e86d4bc8cb"
+    },
+    {
+      "path": ".plan/tasks.md",
+      "sha256": "967dcdab79bbc3eb2af87262ddf6bc378fd12d22f3d296c99d6a9405d332a2e8"
+    },
+    {
+      "path": ".plan/traceability.md",
+      "sha256": "de3ae9c413fca32e25351c2b3a700c4f519def66c5830282335bda242c7f5726"
+    }
+  ]
+}

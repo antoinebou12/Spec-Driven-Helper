@@ -1,0 +1,7 @@
+flowchart TD
+  start([Customer starts]) --> fill[Complete request form]
+  fill --> valid{Valid?}
+  valid -- yes --> submit[Submit request]
+  valid -- no --> fix[Show field errors]
+  fix --> fill
+  submit --> done([Request tracked])

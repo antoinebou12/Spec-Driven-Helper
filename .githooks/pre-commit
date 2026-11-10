@@ -1,0 +1,39 @@
+#!/bin/sh
+# SDD Studio pre-commit checks. Enabled by `pnpm install` (prepare → git config core.hooksPath .githooks).
+# Bypass only in an emergency with `git commit --no-verify`; CI runs the same checks.
+set -e
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+[ -z "$staged" ] && exit 0
+
+# 1. Never commit secrets or local runtime data.
+blocked=$(printf '%s\n' "$staged" | grep -E '(^|/)\.env($|\.)|(^|/)\.runtime/|\.(pem|key|p12|pfx)$|(^|/)id_(rsa|ed25519)' | grep -v '\.env\.example$' || true)
+if [ -n "$blocked" ]; then
+  echo "pre-commit: refusing to commit files that look like secrets or local data:" >&2
+  printf '  %s\n' $blocked >&2
+  exit 1
+fi
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks protect --staged --redact --no-banner
+else
+  echo "pre-commit: gitleaks not installed; secret scan runs in CI." >&2
+fi
+
+code=$(printf '%s\n' "$staged" | grep -E '\.(ts|tsx|js|mjs|cjs)$' || true)
+formatted=$(printf '%s\n' "$staged" | grep -E '\.(ts|tsx|js|mjs|json|css|md|ya?ml)$' | grep -v 'pnpm-lock.yaml' || true)
+
+# 2. Lint staged code (errors fail the commit).
+if [ -n "$code" ]; then
+  pnpm lint
+fi
+
+# 3. Formatting is advisory until the whole repository is formatted (TASK-052).
+if [ -n "$formatted" ]; then
+  printf '%s\n' "$formatted" | xargs -n 30 pnpm exec prettier --check >/dev/null 2>&1 || echo "pre-commit: some staged files are not formatted; run: pnpm exec prettier --write <files>" >&2
+fi
+
+# 4. Types and the static architecture rules (no database needed).
+if [ -n "$code" ]; then
+  pnpm exec tsc --noEmit
+  pnpm exec vitest run tests/architecture.test.ts -t "layer boundaries|naming and structure" --reporter=dot
+fi

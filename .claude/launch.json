@@ -1,0 +1,21 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "sdd-studio",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev"],
+      "port": 5173
+    },
+    {
+      "name": "builder-preview",
+      "runtimeExecutable": "pwsh",
+      "runtimeArgs": [
+        "-NoProfile",
+        "-Command",
+        "$env:HOST='127.0.0.1'; $env:PORT='3101'; $env:WEB_PORT='5174'; $env:API_URL='http://127.0.0.1:3101'; $env:APP_ORIGIN='http://localhost:5174'; $env:DATABASE_URL='postgresql://sdd:sdd-local-development@127.0.0.1:5433/sdd_studio'; $env:DATABASE_NAMESPACE='sdd_test_builder_preview'; $env:OLLAMA_URL='http://127.0.0.1:11434'; $env:BOOTSTRAP_EMAIL='e2e-owner@example.test'; $env:BOOTSTRAP_PASSWORD='e2e-only-password-123'; $env:ENCRYPTION_KEY=('e'*64); $env:AGENT_RUNNER_URL=''; $env:LOG_LEVEL='warn'; pnpm e2e:server"
+      ],
+      "port": 5174
+    }
+  ]
+}

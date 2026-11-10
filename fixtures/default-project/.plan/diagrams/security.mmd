@@ -1,0 +1,12 @@
+flowchart LR
+  subgraph internet[Untrusted: Internet]
+    browser[Browser]
+  end
+  subgraph zone[Trusted: Application zone]
+    api[API] --> db[(Database)]
+  end
+  subgraph ext[External providers]
+    idp[Identity provider]
+  end
+  browser -->|HTTPS and session cookie| api
+  api -->|OIDC| idp

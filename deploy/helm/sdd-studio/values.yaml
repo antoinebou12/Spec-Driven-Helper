@@ -1,0 +1,85 @@
+# SDD Studio Helm values. PostgreSQL 17 with pgvector is external (managed service or your own chart).
+
+image:
+  # The all-in-one image (docker/local.Dockerfile): API, worker and web client.
+  repository: sdd-studio
+  tag: ""            # defaults to the chart appVersion
+  pullPolicy: IfNotPresent
+imagePullSecrets: []
+
+# Public URL of the application (used for cookies, CSRF origin checks and links in llms.txt).
+appOrigin: https://sdd.example.com
+
+database:
+  # Either give the URL here (stored in the chart's Secret) or reference an existing Secret.
+  url: ""
+  existingSecret: ""
+  existingSecretKey: DATABASE_URL
+
+secrets:
+  # 64 hexadecimal characters; keep a copy — stored provider credentials cannot be decrypted without it.
+  encryptionKey: ""
+  # First Owner, used only when no user exists yet.
+  bootstrapEmail: ""
+  bootstrapPassword: ""
+  # Protects /api/metrics for Prometheus.
+  metricsToken: ""
+  # Use an existing Secret with the keys ENCRYPTION_KEY, BOOTSTRAP_EMAIL, BOOTSTRAP_PASSWORD, METRICS_TOKEN instead.
+  existingSecret: ""
+
+# Extra non-secret environment variables (OLLAMA_URL, OTEL_EXPORTER_OTLP_ENDPOINT, AIO_ALLOW_AI_CRAWLERS, …).
+env: {}
+
+api:
+  replicas: 2
+  resources:
+    requests: { cpu: 200m, memory: 384Mi }
+    limits: { memory: 1Gi }
+worker:
+  replicas: 1
+  resources:
+    requests: { cpu: 200m, memory: 384Mi }
+    limits: { memory: 1Gi }
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  host: sdd.example.com
+  tls:
+    enabled: true
+    secretName: sdd-studio-tls
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+networkPolicy:
+  # Restricts ingress to the API pods to the given namespace selector (the ingress controller).
+  enabled: false
+  ingressNamespaceSelector:
+    kubernetes.io/metadata.name: ingress-nginx
+
+serviceMonitor:
+  # Prometheus Operator: scrape /api/metrics with the metrics token.
+  enabled: false
+  interval: 30s
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+  seccompProfile: { type: RuntimeDefault }
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities: { drop: [ALL] }
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

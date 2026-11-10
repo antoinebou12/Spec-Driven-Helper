@@ -1,0 +1,78 @@
+# Observability overlay: Prometheus (metrics and alert rules), Grafana (dashboards) and Netdata
+# (host and container resources). Start with:
+#   docker compose -f compose.yaml -f compose.observability.yaml up -d
+# Required in .env: METRICS_TOKEN (random) and GRAFANA_ADMIN_PASSWORD. UIs bind to 127.0.0.1 only:
+#   Grafana http://localhost:3300 · Prometheus http://localhost:9090 · Netdata http://localhost:19999
+# The admin page shows live figures and links to these tools through GRAFANA_URL, PROMETHEUS_URL, NETDATA_URL.
+
+services:
+  app:
+    environment:
+      METRICS_TOKEN: ${METRICS_TOKEN:?Set METRICS_TOKEN in .env to protect /api/metrics}
+      GRAFANA_URL: ${GRAFANA_URL:-http://localhost:3300}
+      PROMETHEUS_URL: ${PROMETHEUS_URL:-http://localhost:9090}
+      NETDATA_URL: ${NETDATA_URL:-http://localhost:19999}
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    restart: unless-stopped
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=${PROMETHEUS_RETENTION:-15d}
+    volumes:
+      - ./deploy/observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./deploy/observability/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus-data:/prometheus
+    secrets: [metrics_token]
+    ports: ['127.0.0.1:${PROMETHEUS_PORT:-9090}:9090']
+    depends_on: [app]
+    security_opt: ['no-new-privileges:true']
+
+  grafana:
+    image: grafana/grafana-oss:12.1.1
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?Set GRAFANA_ADMIN_PASSWORD in .env}
+      GF_USERS_ALLOW_SIGN_UP: 'false'
+      GF_AUTH_ANONYMOUS_ENABLED: 'false'
+      GF_ANALYTICS_REPORTING_ENABLED: 'false'
+      GF_ANALYTICS_CHECK_FOR_UPDATES: 'false'
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /var/lib/grafana/dashboards/sdd-studio.json
+    volumes:
+      - ./deploy/observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./deploy/observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    ports: ['127.0.0.1:${GRAFANA_PORT:-3300}:3000']
+    depends_on: [prometheus]
+    security_opt: ['no-new-privileges:true']
+
+  netdata:
+    image: netdata/netdata:stable
+    restart: unless-stopped
+    hostname: sdd-studio
+    # Netdata reads host metrics: read-only host mounts and ptrace to see processes.
+    pid: host
+    cap_add: [SYS_PTRACE, SYS_ADMIN]
+    security_opt: ['apparmor:unconfined']
+    environment:
+      DO_NOT_TRACK: '1'
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /etc/os-release:/host/etc/os-release:ro
+      - netdata-config:/etc/netdata
+      - netdata-lib:/var/lib/netdata
+      - netdata-cache:/var/cache/netdata
+    ports: ['127.0.0.1:${NETDATA_PORT:-19999}:19999']
+
+secrets:
+  metrics_token:
+    environment: METRICS_TOKEN
+
+volumes:
+  prometheus-data:
+  grafana-data:
+  netdata-config:
+  netdata-lib:
+  netdata-cache:

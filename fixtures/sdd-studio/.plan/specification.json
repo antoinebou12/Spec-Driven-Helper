@@ -1,0 +1,1221 @@
+{
+  "format": "sdd-studio",
+  "version": 1,
+  "spec": {
+    "schemaVersion": 1,
+    "id": "00000000-0000-4000-8000-000000000002",
+    "name": "SDD Studio",
+    "description": "Self-hosted workspace for writing, reviewing and publishing software design documents: 14 bilingual modules, traceability, a technology radar, AI proposals, readiness, baselines, an implementation board and Git publishing.",
+    "projectType": "Web application",
+    "language": "en",
+    "localOnly": false,
+    "level": "complete",
+    "revision": 1,
+    "sections": [
+      {
+        "id": "discovery",
+        "markdown": "# Business & discovery\n\nStart with the problem worth solving.\n\n## Problem to solve\n\n<!-- sdd:answer discovery.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Business goals\n\n<!-- sdd:answer discovery.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Stakeholders and owners\n\n<!-- sdd:answer discovery.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Target users and personas\n\n<!-- sdd:answer discovery.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Expected users and concurrent users\n\n<!-- sdd:answer discovery.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Business model and budget\n\n<!-- sdd:answer discovery.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Constraints and assumptions\n\n<!-- sdd:answer discovery.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Success metrics\n\n<!-- sdd:answer discovery.8 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Business risks\n\n<!-- sdd:answer discovery.9 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {},
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "scope",
+        "markdown": "# Scope & requirements\n\nDefine what success includes.\n\n## In scope\n\n<!-- sdd:answer scope.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Out of scope\n\n<!-- sdd:answer scope.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Functional requirements and priorities\n\n<!-- sdd:answer scope.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Acceptance criteria\n\n<!-- sdd:answer scope.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Dependencies\n\n<!-- sdd:answer scope.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Assumptions to validate\n\n<!-- sdd:answer scope.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Release milestones\n\n<!-- sdd:answer scope.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {},
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "workflows",
+        "markdown": "# Users & workflows\n\nFollow the journey, including its exceptions.\n\n## Actors and permissions\n\n<!-- sdd:answer workflows.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Primary user journey\n\n<!-- sdd:answer workflows.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Use cases and triggers\n\n<!-- sdd:answer workflows.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Business rules\n\n<!-- sdd:answer workflows.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Error and exception paths\n\n<!-- sdd:answer workflows.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## States and transitions\n\n<!-- sdd:answer workflows.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Accessibility needs\n\n<!-- sdd:answer workflows.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {},
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "architecture",
+        "markdown": "# Architecture & ADRs\n\nMake the reasoning behind decisions visible.\n\n## System boundaries\n\n<!-- sdd:answer architecture.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Components and responsibilities\n\n<!-- sdd:answer architecture.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Integration contracts\n\n<!-- sdd:answer architecture.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Deployment topology\n\n<!-- sdd:answer architecture.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Alternatives and tradeoffs\n\n<!-- sdd:answer architecture.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Architecture decisions and rationale\n\n<!-- sdd:answer architecture.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Component ownership\n\n<!-- sdd:answer architecture.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Frontend components\n\n<!-- sdd:answer architecture.9 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Backend components\n\n<!-- sdd:answer architecture.10 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {},
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "data",
+        "markdown": "# Data & APIs\n\nDescribe the information the system depends on.\n\n## Entities and relationships\n\n<!-- sdd:answer data.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## API contracts and versioning\n\n<!-- sdd:answer data.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Events and delivery guarantees\n\n<!-- sdd:answer data.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Validation and error contracts\n\n<!-- sdd:answer data.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Retention and deletion\n\n<!-- sdd:answer data.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Schema migrations\n\n<!-- sdd:answer data.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Interoperability and import/export\n\n<!-- sdd:answer data.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Communication styles\n\n<!-- sdd:answer data.10 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Contract languages\n\n<!-- sdd:answer data.11 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Serialization formats\n\n<!-- sdd:answer data.12 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {},
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "quality",
+        "markdown": "# Nonfunctional requirements\n\nTurn expectations into measurable targets.\n\n## Latency and throughput targets\n\n<!-- sdd:answer quality.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Concurrency and capacity\n\n<!-- sdd:answer quality.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Availability target\n\n<!-- sdd:answer quality.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Accessibility standard\n\n<!-- sdd:answer quality.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Scaling strategy\n\n<!-- sdd:answer quality.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Resilience and recovery targets\n\n<!-- sdd:answer quality.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Maintainability requirements\n\n<!-- sdd:answer quality.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Verification method for each target\n\n<!-- sdd:answer quality.8 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Availability target\n\n<!-- sdd:answer quality.11 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Response time target (p95)\n\n<!-- sdd:answer quality.12 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {},
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "security",
+        "markdown": "# Security & privacy\n\nKnow what you protect and who can access it.\n\n## Assets and data classification\n\n<!-- sdd:answer security.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Threat model and trust boundaries\n\n<!-- sdd:answer security.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Authentication and session policy\n\n<!-- sdd:answer security.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Role and permission matrix\n\n<!-- sdd:answer security.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Secrets and key management\n\n<!-- sdd:answer security.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Encryption requirements\n\n<!-- sdd:answer security.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Audit and incident evidence\n\n<!-- sdd:answer security.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Privacy and applicable obligations\n\n<!-- sdd:answer security.8 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Cookies and client-side storage\n\n<!-- sdd:answer security.11 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Multi-factor authentication\n\n<!-- sdd:answer security.12 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Personal data processed\n\n<!-- sdd:answer security.13 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Data classification\n\n<!-- sdd:answer security.14 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {},
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "design",
+        "markdown": "# UX & design system\n\nMake the experience coherent and accessible.\n\n## Navigation and information architecture\n\n<!-- sdd:answer design.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Screen inventory\n\n<!-- sdd:answer design.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Components and interaction states\n\n<!-- sdd:answer design.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Color and typography tokens\n\n<!-- sdd:answer design.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Responsive behavior\n\n<!-- sdd:answer design.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Keyboard and assistive technology\n\n<!-- sdd:answer design.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## UX validation plan\n\n<!-- sdd:answer design.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {},
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "technology",
+        "markdown": "# Technology & tooling\n\nChoose technology with evidence.\n\n## Selected frameworks and platforms\n\n<!-- sdd:answer technology.1 -->\n| Technology | Version | Purpose | Ring |\n| --- | --- | --- | --- |\n| React | 19 | Web frontend | Adopt |\n| Fastify | 5 | Backend & APIs | Adopt |\n| TypeScript | 5.9 | Web frontend | Adopt |\n| Vite | 7 | Web frontend | Adopt |\n| Vitest | 3 | Testing & quality | Adopt |\n| Playwright | 1.5x | Testing & quality | Adopt |\n| Storybook | 10 | Testing & quality | Adopt |\n| ESLint | 9 | Testing & quality | Adopt |\n| PostgreSQL | 8 | Data storage | Adopt |\n| OpenTelemetry | 1.x (stable signals) | Observability | Adopt |\n| Node.js | 24 | Backend & APIs | Adopt |\n| Python | 3.14 | Backend & APIs | Adopt |\n| Docker | Engine latest | Hosting, cloud & VMs | Adopt |\n| Kubernetes | 1.35 | Hosting, cloud & VMs | Adopt |\n| Helm | 4 | Infrastructure as code | Assess |\n| GitHub Actions | Hosted | CI/CD & pipeline | Adopt |\n<!-- sdd:end -->\n\n## Version and support policies\n\n<!-- sdd:answer technology.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Licenses and restrictions\n\n<!-- sdd:answer technology.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Alternatives considered\n\n<!-- sdd:answer technology.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Official and custom references\n\n<!-- sdd:answer technology.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Development tooling\n\n<!-- sdd:answer technology.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Adoption rationale\n\n<!-- sdd:answer technology.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Approved usage and restrictions\n\n<!-- sdd:answer technology.8 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {
+          "technology.1": {
+            "value": "[[\"React\",\"19\",\"Web frontend\",\"Adopt\"],[\"Fastify\",\"5\",\"Backend & APIs\",\"Adopt\"],[\"TypeScript\",\"5.9\",\"Web frontend\",\"Adopt\"],[\"Vite\",\"7\",\"Web frontend\",\"Adopt\"],[\"Vitest\",\"3\",\"Testing & quality\",\"Adopt\"],[\"Playwright\",\"1.5x\",\"Testing & quality\",\"Adopt\"],[\"Storybook\",\"10\",\"Testing & quality\",\"Adopt\"],[\"ESLint\",\"9\",\"Testing & quality\",\"Adopt\"],[\"PostgreSQL\",\"8\",\"Data storage\",\"Adopt\"],[\"OpenTelemetry\",\"1.x (stable signals)\",\"Observability\",\"Adopt\"],[\"Node.js\",\"24\",\"Backend & APIs\",\"Adopt\"],[\"Python\",\"3.14\",\"Backend & APIs\",\"Adopt\"],[\"Docker\",\"Engine latest\",\"Hosting, cloud & VMs\",\"Adopt\"],[\"Kubernetes\",\"1.35\",\"Hosting, cloud & VMs\",\"Adopt\"],[\"Helm\",\"4\",\"Infrastructure as code\",\"Assess\"],[\"GitHub Actions\",\"Hosted\",\"CI/CD & pipeline\",\"Adopt\"]]",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "conventions",
+        "markdown": "# Engineering conventions\n\nGive contributors a shared vocabulary.\n\n## Naming and nomenclature\n\n<!-- sdd:answer conventions.1 -->\n**TypeScript / JavaScript** — [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)\n\n| Element | Convention | Example |\n| --- | --- | --- |\n| Files and modules | kebab-case; React components PascalCase | `user-service.ts, UserCard.tsx` |\n| Folders and packages | kebab-case | `src/features/order-history/` |\n| Types, classes, interfaces | PascalCase | `OrderSummary, PaymentStatus` |\n| Functions and methods | camelCase | `calculateTotal()` |\n| Variables and parameters | camelCase | `retryCount` |\n| Constants | camelCase, or SCREAMING_SNAKE_CASE for fixed values | `MAX_RETRIES` |\n| Tests | *.test.ts beside the code | `user-service.test.ts` |\n\nAvoid the I prefix on interfaces and default exports for shared modules.\n\n**Python** — [PEP 8 — Style Guide for Python Code](https://peps.python.org/pep-0008/)\n\n| Element | Convention | Example |\n| --- | --- | --- |\n| Files and modules | snake_case, short and lower case | `user_service.py` |\n| Folders and packages | snake_case packages (no hyphens) | `src/order_history/` |\n| Types, classes, interfaces | PascalCase; exceptions end in Error | `OrderSummary, PaymentError` |\n| Functions and methods | snake_case | `calculate_total()` |\n| Variables and parameters | snake_case; _leading underscore when internal | `retry_count, _cache` |\n| Constants | SCREAMING_SNAKE_CASE at module level | `MAX_RETRIES` |\n| Tests | tests/test_*.py | `tests/test_user_service.py` |\n\nDistribution names may use hyphens (my-package); the import package uses underscores (my_package).\n<!-- sdd:end -->\n\n## Repository and folder structure\n\n<!-- sdd:answer conventions.2 -->\n**TypeScript / JavaScript**\n\n```text\npackage.json\ntsconfig.json\nsrc/\n  features/<feature>/\n  lib/\n  index.ts\ntests/\n  e2e/\n```\n\nTools: ESLint (typescript-eslint), Prettier or Biome, EditorConfig.\n\n**Python**\n\n```text\npyproject.toml\nsrc/<package_name>/\n  __init__.py\n  <module>.py\ntests/\n  test_<module>.py\n```\n\nTools: Ruff (lint and format), mypy or pyright, uv or Poetry.\n<!-- sdd:end -->\n\n## Backend and frontend boundaries\n\n<!-- sdd:answer conventions.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Lint and formatting rules\n\n<!-- sdd:answer conventions.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Error handling conventions\n\n<!-- sdd:answer conventions.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Documentation conventions\n\n<!-- sdd:answer conventions.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Do and do not examples\n\n<!-- sdd:answer conventions.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {
+          "conventions.1": {
+            "value": "**TypeScript / JavaScript** — [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)\n\n| Element | Convention | Example |\n| --- | --- | --- |\n| Files and modules | kebab-case; React components PascalCase | `user-service.ts, UserCard.tsx` |\n| Folders and packages | kebab-case | `src/features/order-history/` |\n| Types, classes, interfaces | PascalCase | `OrderSummary, PaymentStatus` |\n| Functions and methods | camelCase | `calculateTotal()` |\n| Variables and parameters | camelCase | `retryCount` |\n| Constants | camelCase, or SCREAMING_SNAKE_CASE for fixed values | `MAX_RETRIES` |\n| Tests | *.test.ts beside the code | `user-service.test.ts` |\n\nAvoid the I prefix on interfaces and default exports for shared modules.\n\n**Python** — [PEP 8 — Style Guide for Python Code](https://peps.python.org/pep-0008/)\n\n| Element | Convention | Example |\n| --- | --- | --- |\n| Files and modules | snake_case, short and lower case | `user_service.py` |\n| Folders and packages | snake_case packages (no hyphens) | `src/order_history/` |\n| Types, classes, interfaces | PascalCase; exceptions end in Error | `OrderSummary, PaymentError` |\n| Functions and methods | snake_case | `calculate_total()` |\n| Variables and parameters | snake_case; _leading underscore when internal | `retry_count, _cache` |\n| Constants | SCREAMING_SNAKE_CASE at module level | `MAX_RETRIES` |\n| Tests | tests/test_*.py | `tests/test_user_service.py` |\n\nDistribution names may use hyphens (my-package); the import package uses underscores (my_package).",
+            "state": "answered",
+            "reason": ""
+          },
+          "conventions.2": {
+            "value": "**TypeScript / JavaScript**\n\n```text\npackage.json\ntsconfig.json\nsrc/\n  features/<feature>/\n  lib/\n  index.ts\ntests/\n  e2e/\n```\n\nTools: ESLint (typescript-eslint), Prettier or Biome, EditorConfig.\n\n**Python**\n\n```text\npyproject.toml\nsrc/<package_name>/\n  __init__.py\n  <module>.py\ntests/\n  test_<module>.py\n```\n\nTools: Ruff (lint and format), mypy or pyright, uv or Poetry.",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "testing",
+        "markdown": "# Testing & quality\n\nConnect every important promise to a test.\n\n## Test pyramid and ownership\n\n<!-- sdd:answer testing.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Unit test boundaries\n\n<!-- sdd:answer testing.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Integration and contract tests\n\n<!-- sdd:answer testing.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## End-to-end acceptance journeys\n\n<!-- sdd:answer testing.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Performance and security tests\n\n<!-- sdd:answer testing.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Accessibility tests\n\n<!-- sdd:answer testing.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Fixtures and test data\n\n<!-- sdd:answer testing.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Quality gates and release criteria\n\n<!-- sdd:answer testing.8 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {},
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "delivery",
+        "markdown": "# Delivery & environments\n\nMake delivery repeatable.\n\n## Development test and production environments\n\n<!-- sdd:answer delivery.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Environment configuration and secrets\n\n<!-- sdd:answer delivery.2 -->\nConfiguration variables documented in .env.example: HOST, PORT, APP_ORIGIN, APP_ALLOWED_ORIGINS, ENCRYPTION_KEY, BOOTSTRAP_EMAIL, BOOTSTRAP_PASSWORD, DATABASE_URL, POSTGRES_PASSWORD, OIDC_ISSUER, OIDC_CLIENT_ID, OIDC_CLIENT_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, OLLAMA_URL, OLLAMA_NUM_CTX, OLLAMA_NUM_PREDICT, OLLAMA_RUN_TIMEOUT_MS, NIM_BASE_URL, COMPOSE_OLLAMA_URL, OLLAMA_MODEL, OLLAMA_EMBEDDING_MODEL, APP_PORT, COMPOSE_APP_ORIGIN, AGENT_RUNNER_URL, AGENT_RUNNER_TOKEN, PUBLISHER_URL, PUBLISHER_TOKEN, MCP_ALLOWED_ORIGINS, MCP_RATE_LIMIT_MAX, OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_SERVICE_NAME, METRICS_TOKEN, RATE_LIMIT_MAX, AIO_ALLOW_AI_CRAWLERS, GRAFANA_ADMIN_PASSWORD, GRAFANA_URL, PROMETHEUS_URL, NETDATA_URL, TRACES_URL.\n<!-- sdd:end -->\n\n## CI/CD pipeline\n\n<!-- sdd:answer delivery.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Infrastructure and ownership\n\n<!-- sdd:answer delivery.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Docker installation\n\n<!-- sdd:answer delivery.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Non-Docker platform prerequisites\n\n<!-- sdd:answer delivery.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Migration and rollback plan\n\n<!-- sdd:answer delivery.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Deployment targets\n\n<!-- sdd:answer delivery.9 -->\n- Kubernetes\n<!-- sdd:end -->\n\n## Cloud and virtualization providers\n\n<!-- sdd:answer delivery.10 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## CI/CD platform\n\n<!-- sdd:answer delivery.11 -->\nGitHub Actions\n<!-- sdd:end -->\n\n## Pipeline stages\n\n<!-- sdd:answer delivery.12 -->\n- Lint and format check\n- Type check / compile\n- Unit tests\n- End-to-end tests\n- Dependency scan\n- Secret scan\n- Container image scan\n- Build artifact / image\n- Deploy to production\n<!-- sdd:end -->\n\n## Infrastructure as code\n\n<!-- sdd:answer delivery.13 -->\nYes\n<!-- sdd:end -->\n\n## Server operating systems\n\n<!-- sdd:answer delivery.14 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Infrastructure-as-code tools\n\n<!-- sdd:answer delivery.15 -->\n- Helm\n<!-- sdd:end -->\n\n## State and locking\n\n<!-- sdd:answer delivery.16 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Infrastructure change workflow\n\n<!-- sdd:answer delivery.17 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Drift detection\n\n<!-- sdd:answer delivery.18 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Policy as code and IaC scanning\n\n<!-- sdd:answer delivery.19 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {
+          "delivery.9": {
+            "value": "[\"Kubernetes\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.13": {
+            "value": "yes",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.15": {
+            "value": "[\"Helm\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.11": {
+            "value": "GitHub Actions",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.12": {
+            "value": "[\"Lint and format check\",\"Type check / compile\",\"Unit tests\",\"End-to-end tests\",\"Dependency scan\",\"Secret scan\",\"Container image scan\",\"Build artifact / image\",\"Deploy to production\"]",
+            "state": "answered",
+            "reason": ""
+          },
+          "delivery.2": {
+            "value": "Configuration variables documented in .env.example: HOST, PORT, APP_ORIGIN, APP_ALLOWED_ORIGINS, ENCRYPTION_KEY, BOOTSTRAP_EMAIL, BOOTSTRAP_PASSWORD, DATABASE_URL, POSTGRES_PASSWORD, OIDC_ISSUER, OIDC_CLIENT_ID, OIDC_CLIENT_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, OLLAMA_URL, OLLAMA_NUM_CTX, OLLAMA_NUM_PREDICT, OLLAMA_RUN_TIMEOUT_MS, NIM_BASE_URL, COMPOSE_OLLAMA_URL, OLLAMA_MODEL, OLLAMA_EMBEDDING_MODEL, APP_PORT, COMPOSE_APP_ORIGIN, AGENT_RUNNER_URL, AGENT_RUNNER_TOKEN, PUBLISHER_URL, PUBLISHER_TOKEN, MCP_ALLOWED_ORIGINS, MCP_RATE_LIMIT_MAX, OTEL_EXPORTER_OTLP_ENDPOINT, OTEL_SERVICE_NAME, METRICS_TOKEN, RATE_LIMIT_MAX, AIO_ALLOW_AI_CRAWLERS, GRAFANA_ADMIN_PASSWORD, GRAFANA_URL, PROMETHEUS_URL, NETDATA_URL, TRACES_URL.",
+            "state": "answered",
+            "reason": ""
+          }
+        },
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "operations",
+        "markdown": "# Operations & observability\n\nPlan for the day after launch.\n\n## SLIs SLOs and SLA targets\n\n<!-- sdd:answer operations.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Logs metrics and traces\n\n<!-- sdd:answer operations.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Alerts and on-call ownership\n\n<!-- sdd:answer operations.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Incident response and escalation\n\n<!-- sdd:answer operations.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Operational runbooks\n\n<!-- sdd:answer operations.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Backup and restore verification\n\n<!-- sdd:answer operations.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Disaster recovery RPO and RTO\n\n<!-- sdd:answer operations.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Operating cost and capacity review\n\n<!-- sdd:answer operations.8 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Around-the-clock on-call\n\n<!-- sdd:answer operations.11 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {},
+        "status": "draft",
+        "references": []
+      },
+      {
+        "id": "governance",
+        "markdown": "# Governance & handoff\n\nMake responsibilities and next steps explicit.\n\n## RACI responsibilities\n\n<!-- sdd:answer governance.1 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Reviewers and approvals\n\n<!-- sdd:answer governance.2 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Milestones and dependencies\n\n<!-- sdd:answer governance.3 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Readiness and unresolved decisions\n\n<!-- sdd:answer governance.4 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Contributor onboarding\n\n<!-- sdd:answer governance.5 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Implementation tasks\n\n<!-- sdd:answer governance.6 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Coding-agent instructions\n\n<!-- sdd:answer governance.7 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Project license\n\n<!-- sdd:answer governance.8 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Distribution model\n\n<!-- sdd:answer governance.9 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Allowed dependency licenses\n\n<!-- sdd:answer governance.10 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## License compliance in the pipeline\n\n<!-- sdd:answer governance.11 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Specification persistence model\n\n<!-- sdd:answer governance.12 -->\n_Not answered yet._\n<!-- sdd:end -->\n\n## Large feature decomposition\n\n<!-- sdd:answer governance.13 -->\n_Not answered yet._\n<!-- sdd:end -->\n",
+        "diagram": "",
+        "answers": {},
+        "status": "draft",
+        "references": []
+      }
+    ],
+    "items": [],
+    "links": [],
+    "technologyIds": [
+      "4bc3b9cc-a4fa-51bb-bbfc-55fac00e1c80",
+      "7f0fcc0f-1304-5e96-a498-975b630f1d55",
+      "fcb29f59-e719-530d-b2d9-4d5305f611bc",
+      "be043ab5-eb38-56dd-999a-7a4362e5b977",
+      "1eea2d5b-40bc-5f22-95d9-38735068bb8e",
+      "361cc415-c8f3-5c35-854d-5aa1f3971f37",
+      "8748c155-d65b-561e-bc9f-9e3d40259c4d",
+      "02cced4f-645e-5652-a16d-142911beb2ed",
+      "6d88c477-ce98-5d5d-84e8-759516c72082",
+      "8a1f6551-ec79-5ff3-9653-1189514d7270",
+      "91ff2690-881e-550a-bb1a-8a6e21aab550",
+      "1fc6c09e-9e12-5116-8854-a0f7abf24194",
+      "e22ea1b8-540d-5016-a251-4ea825679dfe",
+      "e0bc7d1f-2eb8-5ac5-ae5b-99f1f8648a6e",
+      "80be1ed2-832b-52b5-8bb6-7ecc5daf854d",
+      "8cf1e2c9-2dca-50a1-b1a3-e84d913dbf98"
+    ],
+    "technologyDecisions": {},
+    "stack": [
+      {
+        "technologyId": "4bc3b9cc-a4fa-51bb-bbfc-55fac00e1c80",
+        "layer": "frontend",
+        "version": "19",
+        "note": "Detected: package.json: react@^19.2.0"
+      },
+      {
+        "technologyId": "7f0fcc0f-1304-5e96-a498-975b630f1d55",
+        "layer": "backend",
+        "version": "5",
+        "note": "Detected: package.json: fastify@^5.6.1"
+      },
+      {
+        "technologyId": "fcb29f59-e719-530d-b2d9-4d5305f611bc",
+        "layer": "frontend",
+        "version": "5.9",
+        "note": "Detected: package.json: typescript@^5.9.3"
+      },
+      {
+        "technologyId": "be043ab5-eb38-56dd-999a-7a4362e5b977",
+        "layer": "frontend",
+        "version": "7",
+        "note": "Detected: package.json: vite@^7.2.2"
+      },
+      {
+        "technologyId": "1eea2d5b-40bc-5f22-95d9-38735068bb8e",
+        "layer": "testing",
+        "version": "3",
+        "note": "Detected: package.json: vitest@^3.2.4"
+      },
+      {
+        "technologyId": "361cc415-c8f3-5c35-854d-5aa1f3971f37",
+        "layer": "testing",
+        "version": "1.5x",
+        "note": "Detected: package.json: @playwright/test@^1.56.1"
+      },
+      {
+        "technologyId": "8748c155-d65b-561e-bc9f-9e3d40259c4d",
+        "layer": "testing",
+        "version": "10",
+        "note": "Detected: package.json: storybook@^10.6.0"
+      },
+      {
+        "technologyId": "02cced4f-645e-5652-a16d-142911beb2ed",
+        "layer": "testing",
+        "version": "9",
+        "note": "Detected: package.json: eslint@^9.39.0"
+      },
+      {
+        "technologyId": "6d88c477-ce98-5d5d-84e8-759516c72082",
+        "layer": "data",
+        "version": "8",
+        "note": "Detected: package.json: pg@^8.23.0"
+      },
+      {
+        "technologyId": "8a1f6551-ec79-5ff3-9653-1189514d7270",
+        "layer": "observability",
+        "version": "1.x (stable signals)",
+        "note": "Detected: package.json: @opentelemetry/api@^1.9.0"
+      },
+      {
+        "technologyId": "91ff2690-881e-550a-bb1a-8a6e21aab550",
+        "layer": "backend",
+        "version": "24",
+        "note": "Detected: package.json: Node.js project"
+      },
+      {
+        "technologyId": "1fc6c09e-9e12-5116-8854-a0f7abf24194",
+        "layer": "backend",
+        "version": "3.14",
+        "note": "Detected: scripts/ux/requirements.txt"
+      },
+      {
+        "technologyId": "e22ea1b8-540d-5016-a251-4ea825679dfe",
+        "layer": "infrastructure",
+        "version": "Engine latest",
+        "note": "Detected: apps/publisher/Dockerfile"
+      },
+      {
+        "technologyId": "e0bc7d1f-2eb8-5ac5-ae5b-99f1f8648a6e",
+        "layer": "infrastructure",
+        "version": "1.35",
+        "note": "Detected: deploy/helm/sdd-studio/templates/deployment-api.yaml"
+      },
+      {
+        "technologyId": "80be1ed2-832b-52b5-8bb6-7ecc5daf854d",
+        "layer": "iac",
+        "version": "4",
+        "note": "Detected: deploy/helm/sdd-studio/Chart.yaml"
+      },
+      {
+        "technologyId": "8cf1e2c9-2dca-50a1-b1a3-e84d913dbf98",
+        "layer": "cicd",
+        "version": "Hosted",
+        "note": "Detected: .github/workflows/ci.yml, .github/workflows/docs.yml"
+      }
+    ],
+    "customQuestions": [],
+    "updatedAt": "2026-09-28T00:00:00.000Z",
+    "updatedBy": "fixtures"
+  },
+  "technologies": [
+    {
+      "id": "fcb29f59-e719-530d-b2d9-4d5305f611bc",
+      "name": "TypeScript",
+      "version": "5.9",
+      "quadrant": "Languages & Frameworks",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "Apache-2.0",
+      "support": "5.9: Current",
+      "tags": [
+        "typescript",
+        "web",
+        "node"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "typescript-official",
+          "title": "TypeScript — official site",
+          "url": "https://www.typescriptlang.org/",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "language",
+      "layers": [
+        "frontend",
+        "backend",
+        "desktop",
+        "mobile"
+      ],
+      "versions": [
+        {
+          "version": "5.9",
+          "lts": false,
+          "latest": true,
+          "support": "Current"
+        },
+        {
+          "version": "5.8",
+          "lts": false,
+          "latest": false,
+          "support": ""
+        }
+      ],
+      "icon": "typescript",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "1fc6c09e-9e12-5116-8854-a0f7abf24194",
+      "name": "Python",
+      "version": "3.14",
+      "quadrant": "Languages & Frameworks",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "PSF-2.0",
+      "support": "3.14: Bugfix; 3.13: Bugfix; 3.12: Security fixes; 3.11: Security fixes; 3.10: Security fixes until October 2026",
+      "tags": [
+        "python",
+        "data",
+        "ai",
+        "scripting"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "python-official",
+          "title": "Python — official site",
+          "url": "https://www.python.org/",
+          "kind": "official"
+        },
+        {
+          "id": "python-eol",
+          "title": "Python release and support dates",
+          "url": "https://endoflife.date/python",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "language",
+      "layers": [
+        "backend",
+        "ai",
+        "data"
+      ],
+      "versions": [
+        {
+          "version": "3.14",
+          "lts": false,
+          "latest": true,
+          "support": "Bugfix"
+        },
+        {
+          "version": "3.13",
+          "lts": false,
+          "latest": false,
+          "support": "Bugfix"
+        },
+        {
+          "version": "3.12",
+          "lts": false,
+          "latest": false,
+          "support": "Security fixes"
+        },
+        {
+          "version": "3.11",
+          "lts": false,
+          "latest": false,
+          "support": "Security fixes"
+        },
+        {
+          "version": "3.10",
+          "lts": false,
+          "latest": false,
+          "support": "Security fixes until October 2026"
+        }
+      ],
+      "icon": "python",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "91ff2690-881e-550a-bb1a-8a6e21aab550",
+      "name": "Node.js",
+      "version": "26",
+      "quadrant": "Platforms",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "MIT",
+      "support": "26: Current; becomes LTS in October 2026; 24: Active LTS; 22: Maintenance LTS; 20: End of life April 2026",
+      "tags": [
+        "nodejs"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "nodejs-official",
+          "title": "Node.js — official site",
+          "url": "https://nodejs.org/",
+          "kind": "official"
+        },
+        {
+          "id": "nodejs-eol",
+          "title": "Node.js release and support dates",
+          "url": "https://endoflife.date/nodejs",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "runtime",
+      "layers": [
+        "backend"
+      ],
+      "versions": [
+        {
+          "version": "26",
+          "lts": false,
+          "latest": true,
+          "support": "Current; becomes LTS in October 2026"
+        },
+        {
+          "version": "24",
+          "lts": true,
+          "latest": false,
+          "support": "Active LTS"
+        },
+        {
+          "version": "22",
+          "lts": true,
+          "latest": false,
+          "support": "Maintenance LTS"
+        },
+        {
+          "version": "20",
+          "lts": true,
+          "latest": false,
+          "support": "End of life April 2026"
+        }
+      ],
+      "icon": "nodedotjs",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "4bc3b9cc-a4fa-51bb-bbfc-55fac00e1c80",
+      "name": "React",
+      "version": "19",
+      "quadrant": "Languages & Frameworks",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "MIT",
+      "support": "",
+      "tags": [
+        "react",
+        "web",
+        "spa"
+      ],
+      "alternatives": [
+        "Angular",
+        "Vue",
+        "Svelte"
+      ],
+      "references": [
+        {
+          "id": "react-official",
+          "title": "React — official site",
+          "url": "https://react.dev/",
+          "kind": "official"
+        },
+        {
+          "id": "react-eol",
+          "title": "React release and support dates",
+          "url": "https://endoflife.date/react",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "framework",
+      "layers": [
+        "frontend"
+      ],
+      "versions": [
+        {
+          "version": "19",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        },
+        {
+          "version": "18",
+          "lts": false,
+          "latest": false,
+          "support": ""
+        }
+      ],
+      "icon": "react",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "7f0fcc0f-1304-5e96-a498-975b630f1d55",
+      "name": "Fastify",
+      "version": "5",
+      "quadrant": "Languages & Frameworks",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "MIT",
+      "support": "4: End of life",
+      "tags": [
+        "fastify"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "fastify-official",
+          "title": "Fastify — official site",
+          "url": "https://fastify.dev/",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "framework",
+      "layers": [
+        "backend"
+      ],
+      "versions": [
+        {
+          "version": "5",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        },
+        {
+          "version": "4",
+          "lts": false,
+          "latest": false,
+          "support": "End of life"
+        }
+      ],
+      "icon": "fastify",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "6d88c477-ce98-5d5d-84e8-759516c72082",
+      "name": "PostgreSQL",
+      "version": "18",
+      "quadrant": "Platforms",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "PostgreSQL",
+      "support": "14: Supported until November 2026",
+      "tags": [
+        "postgresql"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "postgresql-official",
+          "title": "PostgreSQL — official site",
+          "url": "https://www.postgresql.org/",
+          "kind": "official"
+        },
+        {
+          "id": "postgresql-eol",
+          "title": "PostgreSQL release and support dates",
+          "url": "https://endoflife.date/postgresql",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "database",
+      "layers": [
+        "data"
+      ],
+      "versions": [
+        {
+          "version": "18",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        },
+        {
+          "version": "17",
+          "lts": false,
+          "latest": false,
+          "support": ""
+        },
+        {
+          "version": "16",
+          "lts": false,
+          "latest": false,
+          "support": ""
+        },
+        {
+          "version": "15",
+          "lts": false,
+          "latest": false,
+          "support": ""
+        },
+        {
+          "version": "14",
+          "lts": false,
+          "latest": false,
+          "support": "Supported until November 2026"
+        }
+      ],
+      "icon": "postgresql",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "e22ea1b8-540d-5016-a251-4ea825679dfe",
+      "name": "Docker",
+      "version": "Engine latest",
+      "quadrant": "Platforms",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "Apache-2.0",
+      "support": "",
+      "tags": [
+        "docker"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "docker-official",
+          "title": "Docker — official site",
+          "url": "https://www.docker.com/",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "platform",
+      "layers": [
+        "infrastructure"
+      ],
+      "versions": [
+        {
+          "version": "Engine latest",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        }
+      ],
+      "icon": "docker",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "e0bc7d1f-2eb8-5ac5-ae5b-99f1f8648a6e",
+      "name": "Kubernetes",
+      "version": "1.35",
+      "quadrant": "Platforms",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "Apache-2.0",
+      "support": "",
+      "tags": [
+        "kubernetes"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "kubernetes-official",
+          "title": "Kubernetes — official site",
+          "url": "https://kubernetes.io/",
+          "kind": "official"
+        },
+        {
+          "id": "kubernetes-eol",
+          "title": "Kubernetes release and support dates",
+          "url": "https://endoflife.date/kubernetes",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "platform",
+      "layers": [
+        "infrastructure"
+      ],
+      "versions": [
+        {
+          "version": "1.35",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        },
+        {
+          "version": "1.34",
+          "lts": false,
+          "latest": false,
+          "support": ""
+        },
+        {
+          "version": "1.33",
+          "lts": false,
+          "latest": false,
+          "support": ""
+        }
+      ],
+      "icon": "kubernetes",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "80be1ed2-832b-52b5-8bb6-7ecc5daf854d",
+      "name": "Helm",
+      "version": "4",
+      "quadrant": "Tools",
+      "ring": "Assess",
+      "owner": "",
+      "rationale": "",
+      "license": "Apache-2.0",
+      "support": "",
+      "tags": [
+        "helm",
+        "packaging",
+        "kubernetes"
+      ],
+      "alternatives": [
+        "Kustomize"
+      ],
+      "references": [
+        {
+          "id": "helm-official",
+          "title": "Helm — official site",
+          "url": "https://helm.sh/",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "iac",
+      "layers": [
+        "iac",
+        "infrastructure",
+        "cicd"
+      ],
+      "versions": [
+        {
+          "version": "4",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        },
+        {
+          "version": "3",
+          "lts": false,
+          "latest": false,
+          "support": ""
+        }
+      ],
+      "icon": "helm",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Assess",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "8cf1e2c9-2dca-50a1-b1a3-e84d913dbf98",
+      "name": "GitHub Actions",
+      "version": "Hosted",
+      "quadrant": "Tools",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "Commercial",
+      "support": "",
+      "tags": [
+        "github-actions"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "github-actions-official",
+          "title": "GitHub Actions — official site",
+          "url": "https://docs.github.com/actions",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "ci-cd",
+      "layers": [
+        "cicd"
+      ],
+      "versions": [
+        {
+          "version": "Hosted",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        }
+      ],
+      "icon": "githubactions",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "361cc415-c8f3-5c35-854d-5aa1f3971f37",
+      "name": "Playwright",
+      "version": "1.5x",
+      "quadrant": "Tools",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "Apache-2.0",
+      "support": "",
+      "tags": [
+        "playwright"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "playwright-official",
+          "title": "Playwright — official site",
+          "url": "https://playwright.dev/",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "testing",
+      "layers": [
+        "testing"
+      ],
+      "versions": [
+        {
+          "version": "1.5x",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        }
+      ],
+      "icon": "",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "1eea2d5b-40bc-5f22-95d9-38735068bb8e",
+      "name": "Vitest",
+      "version": "4",
+      "quadrant": "Tools",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "MIT",
+      "support": "",
+      "tags": [
+        "vitest"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "vitest-official",
+          "title": "Vitest — official site",
+          "url": "https://vitest.dev/",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "testing",
+      "layers": [
+        "testing"
+      ],
+      "versions": [
+        {
+          "version": "4",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        },
+        {
+          "version": "3",
+          "lts": false,
+          "latest": false,
+          "support": ""
+        }
+      ],
+      "icon": "vitest",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "8748c155-d65b-561e-bc9f-9e3d40259c4d",
+      "name": "Storybook",
+      "version": "10",
+      "quadrant": "Tools",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "MIT",
+      "support": "",
+      "tags": [
+        "storybook"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "storybook-official",
+          "title": "Storybook — official site",
+          "url": "https://storybook.js.org/",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "testing",
+      "layers": [
+        "testing",
+        "frontend"
+      ],
+      "versions": [
+        {
+          "version": "10",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        },
+        {
+          "version": "9",
+          "lts": false,
+          "latest": false,
+          "support": ""
+        }
+      ],
+      "icon": "storybook",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "02cced4f-645e-5652-a16d-142911beb2ed",
+      "name": "ESLint",
+      "version": "9",
+      "quadrant": "Tools",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "MIT",
+      "support": "",
+      "tags": [
+        "eslint"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "eslint-official",
+          "title": "ESLint — official site",
+          "url": "https://eslint.org/",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "development",
+      "layers": [
+        "testing",
+        "development"
+      ],
+      "versions": [
+        {
+          "version": "9",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        }
+      ],
+      "icon": "eslint",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "be043ab5-eb38-56dd-999a-7a4362e5b977",
+      "name": "Vite",
+      "version": "7",
+      "quadrant": "Tools",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "MIT",
+      "support": "",
+      "tags": [
+        "vite"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "vite-official",
+          "title": "Vite — official site",
+          "url": "https://vite.dev/",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "tooling",
+      "layers": [
+        "frontend"
+      ],
+      "versions": [
+        {
+          "version": "7",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        }
+      ],
+      "icon": "vite",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    },
+    {
+      "id": "8a1f6551-ec79-5ff3-9653-1189514d7270",
+      "name": "OpenTelemetry",
+      "version": "1.x (stable signals)",
+      "quadrant": "Tools",
+      "ring": "Adopt",
+      "owner": "",
+      "rationale": "",
+      "license": "Apache-2.0",
+      "support": "",
+      "tags": [
+        "opentelemetry"
+      ],
+      "alternatives": [],
+      "references": [
+        {
+          "id": "opentelemetry-official",
+          "title": "OpenTelemetry — official site",
+          "url": "https://opentelemetry.io/",
+          "kind": "official"
+        }
+      ],
+      "reviewDate": "2026-12-31",
+      "decisionIds": [],
+      "category": "observability",
+      "layers": [
+        "observability"
+      ],
+      "versions": [
+        {
+          "version": "1.x (stable signals)",
+          "lts": false,
+          "latest": true,
+          "support": ""
+        }
+      ],
+      "icon": "opentelemetry",
+      "source": "seed",
+      "history": [
+        {
+          "ring": "Adopt",
+          "at": "2026-06-01T00:00:00.000Z",
+          "by": "seed",
+          "note": "Seeded catalog (2026-06)"
+        }
+      ]
+    }
+  ]
+}

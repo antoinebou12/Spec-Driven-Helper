@@ -1,0 +1,5 @@
+flowchart LR
+  user([Customer]) -->|uses| system[Customer portal]
+  agent([Support agent]) -->|manages requests| system
+  system -->|authenticates via| idp[(Identity provider)]
+  system -->|sends email via| mail[Email service]

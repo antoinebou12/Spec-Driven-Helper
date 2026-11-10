@@ -1,0 +1,9 @@
+flowchart TD
+  root[repository] --> apps[apps]
+  root --> packages[packages]
+  root --> docs[docs]
+  apps --> web[web: user interface]
+  apps --> api[api: HTTP service]
+  packages --> shared[shared: schemas and domain]
+  web -.->|imports| shared
+  api -.->|imports| shared

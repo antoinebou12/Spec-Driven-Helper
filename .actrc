@@ -1,0 +1,5 @@
+-P ubuntu-latest=catthehacker/ubuntu:act-latest
+--container-architecture linux/amd64
+--artifact-server-path .act/artifacts
+--secret-file .act/secrets
+--var-file .act/vars

@@ -1,0 +1,9 @@
+erDiagram
+  ORGANIZATION ||--o{ CUSTOMER : employs
+  CUSTOMER ||--o{ REQUEST : submits
+  REQUEST ||--o{ ATTACHMENT : includes
+  REQUEST {
+    string id
+    string status
+    datetime createdAt
+  }

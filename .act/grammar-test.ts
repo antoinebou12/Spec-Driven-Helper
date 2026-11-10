@@ -1,0 +1,6 @@
+const schema = { type: 'object', required: ['title', 'answers', 'assumptions'], properties: { title: { type: 'string', maxLength: 120 }, answers: { type: 'array', maxItems: 5, items: { type: 'object', required: ['question', 'value', 'state'], properties: { question: { type: 'string', enum: ['security.2', 'security.4', 'security.6'] }, value: { type: 'string', maxLength: 800 }, state: { type: 'string', enum: ['answered', 'unknown', 'not-applicable'] }, reason: { type: 'string', maxLength: 300 } } } }, assumptions: { type: 'array', maxItems: 5, items: { type: 'string', maxLength: 300 } } } };
+const started = Date.now();
+const r = await fetch('http://127.0.0.1:11434/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'gemma2:2b', stream: false, format: schema, options: { num_ctx: 4096, num_predict: 900, temperature: 0.2 }, messages: [{ role: 'user', content: 'Suggest answers for open security questions of a helpdesk web app: security.2 threat model, security.4 role matrix, security.6 encryption.' }] }) });
+const data: any = await r.json();
+console.log(r.status, (Date.now() - started) / 1000, 's', data.eval_count, data.done_reason, data.error ?? '');
+console.log(data.message?.content);

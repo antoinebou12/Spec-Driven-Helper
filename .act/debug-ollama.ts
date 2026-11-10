@@ -1,0 +1,14 @@
+import { z } from 'zod';
+import { buildExampleSpec } from '../packages/shared/src/example';
+import { aiResultSchema, grammarSchema, systemPrompt } from '../apps/api/src/providers';
+import { compactRunContext } from '../apps/api/src/local-context';
+const spec = buildExampleSpec('00000000-0000-4000-8000-000000000001');
+const prompt = 'Review the “Security & privacy” section. Point out gaps and propose improvements based on what is recorded.';
+const budget = (8192 - 2048) * 3 - systemPrompt.length;
+const { text, focus } = compactRunContext(spec, prompt, {}, budget);
+console.log('budget', budget, 'context', text.length, 'focus', focus);
+const started = Date.now();
+const r = await fetch('http://127.0.0.1:11434/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ model: 'gemma2:2b', stream: false, format: grammarSchema(z.toJSONSchema(aiResultSchema, { io: 'input', unrepresentable: 'any' })), options: { num_ctx: 8192, num_predict: 700, temperature: 0.2 }, messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: text }] }) });
+const data: any = await r.json();
+console.log('seconds', (Date.now() - started) / 1000, 'prompt tokens', data.prompt_eval_count, 'prompt ms', Math.round(data.prompt_eval_duration / 1e6), 'eval', data.eval_count, 'eval ms', Math.round(data.eval_duration / 1e6), data.done_reason);
+console.log(data.message?.content?.slice(0, 2500));

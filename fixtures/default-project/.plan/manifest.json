@@ -1,0 +1,186 @@
+{
+  "format": "sdd-studio-plan",
+  "version": 1,
+  "projectId": "00000000-0000-4000-8000-000000000001",
+  "revision": 0,
+  "boardCards": 26,
+  "generatedAt": "2026-09-28T00:00:00.000Z",
+  "files": [
+    {
+      "path": ".plan/backlog.md",
+      "sha256": "9cec62b3f716e761bab4a5553f8b105291373cb117e11e6fb7602aa9c9c55de5"
+    },
+    {
+      "path": ".plan/board-backlog.md",
+      "sha256": "cc4a087267ac62a54af7090bb20422e5dcd245d83dcf9119e486898964ade23a"
+    },
+    {
+      "path": ".plan/board.json",
+      "sha256": "1b4fc895fe45ce497575e1991dc7525e136a65f96269f89e23fcd367ce935b04"
+    },
+    {
+      "path": ".plan/changes.md",
+      "sha256": "4dc8e86e4abc09480e6ff60fff644297c5500be0e5787399d180919a48b50286"
+    },
+    {
+      "path": ".plan/decisions/ADR-001.md",
+      "sha256": "39248eb615bdf554a290435a6bcf99f22f048a6a4546ce4fcc290d67d545704d"
+    },
+    {
+      "path": ".plan/decisions/ADR-002.md",
+      "sha256": "ca04a56693acee8bdb8d5e53e89ed270751f78abac2381dad1728c38e18d0ecf"
+    },
+    {
+      "path": ".plan/decisions/ADR-003.md",
+      "sha256": "753d5a0774b869a94e527bf50eaaac668b2e218a562d5b62034573298c3d2582"
+    },
+    {
+      "path": ".plan/designs.md",
+      "sha256": "e0519cb5cfcc7b919c9e737a5dba4849e7082641092a9abfea4ccc28c321551a"
+    },
+    {
+      "path": ".plan/diagrams/architecture.mmd",
+      "sha256": "ecbc8f65521b51fdc2cc52e4c75cbb0b5b6367df6173d1de7303d6c18b88d112"
+    },
+    {
+      "path": ".plan/diagrams/conventions.mmd",
+      "sha256": "f984178bd79e1218160ea7ac112371cf61fba0570be9317bd636961b98d4b80c"
+    },
+    {
+      "path": ".plan/diagrams/data.mmd",
+      "sha256": "0ce3dc636704572c58d133c8320832e5c290eb2b2db62951ebcb9bddc559b4cc"
+    },
+    {
+      "path": ".plan/diagrams/delivery.mmd",
+      "sha256": "bb7cd8656710efe11e154d6a160575c176927cb78c3956dd9a23a83c622a0539"
+    },
+    {
+      "path": ".plan/diagrams/design.mmd",
+      "sha256": "814f030ad47411e53d8b7f2567dab0d339b3cc0ba6f05a49a0fc1770e6980c50"
+    },
+    {
+      "path": ".plan/diagrams/discovery.mmd",
+      "sha256": "df7f1f33680b3777a5e2f6cb30eca57f0e48f9c076d9217358d3a41fe5e113b4"
+    },
+    {
+      "path": ".plan/diagrams/governance.mmd",
+      "sha256": "8747a5fcad6a94aa702ef9de6c385f77d92afef0a0345e6431b65962511b4db3"
+    },
+    {
+      "path": ".plan/diagrams/operations.mmd",
+      "sha256": "dffd21db82779c1b4131d00a96843edd9daa3f0409f2c5a23775aa73d6c97c38"
+    },
+    {
+      "path": ".plan/diagrams/quality.mmd",
+      "sha256": "0bdcbe27d7534e47a804d9398c0035a054c0c49782c2bd247b34a77165f90f44"
+    },
+    {
+      "path": ".plan/diagrams/scope.mmd",
+      "sha256": "2bef1ceb63e602a13eb766aa8da4ad7fb22c156c89faa8bb1f791a9e87865a60"
+    },
+    {
+      "path": ".plan/diagrams/security.mmd",
+      "sha256": "01ffc32c03a2126cfa036fe0d8a8192921ee89ae152dc686ce0b8018c1cbe06e"
+    },
+    {
+      "path": ".plan/diagrams/technology.mmd",
+      "sha256": "21f4d1c61b11aa5f84572b06f8133ff3f0fd4ad73ff5e51077768d85a374c737"
+    },
+    {
+      "path": ".plan/diagrams/testing.mmd",
+      "sha256": "bdb6613f1748f9c1bd38646b6f3d2752c6db46e7f1573c0c08f8b034a044946e"
+    },
+    {
+      "path": ".plan/diagrams/workflows.mmd",
+      "sha256": "92b775df48c5ce84141c0ce07187f7d1f478768dfaa7bbdfa1670cea479d3bfe"
+    },
+    {
+      "path": ".plan/plan.md",
+      "sha256": "a11cbcfd52c03829c631c566d3fae265aa9c19f5744b159522ecd061e1a5cce7"
+    },
+    {
+      "path": ".plan/readiness.md",
+      "sha256": "47b94340816b0734070dc78852a87c86cf28a1418564a1f2c2a56a1d5fbbc371"
+    },
+    {
+      "path": ".plan/README.md",
+      "sha256": "b27d83c03f4029b8a0eaf23e16f152eca4d84ce53970bdd3f349295aa2148988"
+    },
+    {
+      "path": ".plan/security-checklist.md",
+      "sha256": "1960078b1c299b8c9ce6db160a86d3717429c624e256f682ee4b604b645dc567"
+    },
+    {
+      "path": ".plan/spec/01-discovery.md",
+      "sha256": "ddf7019728771deeb0af07cc3705791ed21d70c214c63c534573a06f8f859f02"
+    },
+    {
+      "path": ".plan/spec/02-scope.md",
+      "sha256": "c795ffd25f77fe7bad23090e23adb3076b5ddbc661ecd356c4bbc407236f0053"
+    },
+    {
+      "path": ".plan/spec/03-workflows.md",
+      "sha256": "6c49f02845acf9044648b76e55e7a4b33daac5c890a40cf70ac6cb3eaa23abd7"
+    },
+    {
+      "path": ".plan/spec/04-architecture.md",
+      "sha256": "33982314015bb0ee448f49bda7e4285073948ea666aa63c66eb5ba9060c5a7f3"
+    },
+    {
+      "path": ".plan/spec/05-data.md",
+      "sha256": "8d4c7625910a069107ef4e5506d9df1148cfca00a376585e03c479fe89fd09a0"
+    },
+    {
+      "path": ".plan/spec/06-quality.md",
+      "sha256": "d39b818a284ea56c2a3fc06966613629358b36c2f87782b6d46d0d792924a4a2"
+    },
+    {
+      "path": ".plan/spec/07-security.md",
+      "sha256": "8fdc65276db71a7df337e8aa9d106215410e7a4b8c0ee64e3c21b59e695646a7"
+    },
+    {
+      "path": ".plan/spec/08-design.md",
+      "sha256": "a603375380c63b393225e02d24c6ff499daa71e0bcb8be741c39b3a20526d2c2"
+    },
+    {
+      "path": ".plan/spec/09-technology.md",
+      "sha256": "b158115e6ae3b00f7b8ee6ee1b976d822fb2e53ce1cfc00876f02a77df678748"
+    },
+    {
+      "path": ".plan/spec/10-conventions.md",
+      "sha256": "fe85cd571015c7b97b56860d3bc842f9168569a7837ab2fd605a9bf897a4224a"
+    },
+    {
+      "path": ".plan/spec/11-testing.md",
+      "sha256": "73c62a31095212fae714e93b4f66458e584dd1802094fe0d176752069acb1aaa"
+    },
+    {
+      "path": ".plan/spec/12-delivery.md",
+      "sha256": "b99b7e6339f6e49ebd590a757e7d2618e61d88428ea8fa9b3447e2c8193883d4"
+    },
+    {
+      "path": ".plan/spec/13-operations.md",
+      "sha256": "d6d11e528fbb75ba3649d63607fb4b604dfd0721e9a8c1bb9345a52581f72cc8"
+    },
+    {
+      "path": ".plan/spec/14-governance.md",
+      "sha256": "bdaf322d6798b48a0a714ab4524b1524a7e8b20eba37cb1514f5ef0d86fbedb0"
+    },
+    {
+      "path": ".plan/specification.json",
+      "sha256": "002a109e64ced3211774c3b16c3f149ccf23577dd0eb8b666424d8b3317bacea"
+    },
+    {
+      "path": ".plan/specification.toon",
+      "sha256": "6d8765adefa1d3ed4ef4a0641c332342a860ce777cd6364f0df6eb3cfb6a8dd7"
+    },
+    {
+      "path": ".plan/tasks.md",
+      "sha256": "d8748d0a5ea663c7ae27384c464cd755c9106e971c12e8be20014a43818cb12c"
+    },
+    {
+      "path": ".plan/traceability.md",
+      "sha256": "cc530a3f15152ee6e95c48adc9f5b5338ba379672aa2da13d73be9593d8b944f"
+    }
+  ]
+}

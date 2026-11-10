@@ -1,0 +1,21 @@
+packages:
+  - apps/*
+  - packages/*
+allowBuilds:
+  esbuild: true
+  '@openuidev/lang-core': true
+  protobufjs: true
+  # Install analytics pulled in by CopilotKit; never run it (self-hosted, DO_NOT_TRACK).
+  '@scarf/scarf': false
+  # Optional native speed-ups of ssh2 (Testcontainers); the pure-JS fallback is enough for local Docker.
+  cpu-features: false
+  ssh2: false
+minimumReleaseAgeExclude:
+  - '@copilotkit/a2ui-renderer@1.75.0'
+  - '@copilotkit/core@1.75.0'
+  - '@copilotkit/mcp-apps-renderer@1.75.0'
+  - '@copilotkit/react-core@1.75.0'
+  - '@copilotkit/runtime-client-gql@1.75.0'
+  - '@copilotkit/shared@1.75.0'
+  - '@copilotkit/web-components@1.75.0'
+  - '@copilotkit/web-inspector@1.75.0'

@@ -1,0 +1,8 @@
+flowchart LR
+  commit[Commit] --> checks[Lint and typecheck]
+  checks --> tests[Tests]
+  tests --> scan[Dependency and secret scan]
+  scan --> build[Build image]
+  build --> staging[Deploy to staging]
+  staging --> approve{Approval}
+  approve --> prod[Production]

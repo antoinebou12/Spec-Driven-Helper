@@ -1,0 +1,10 @@
+apiVersion: v2
+name: sdd-studio
+description: Self-hosted workspace for software design documents (API, worker and web client in one image).
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+keywords: [specification, design-document, sdd, mcp]
+home: https://github.com/
+maintainers:
+  - name: SDD Studio maintainers

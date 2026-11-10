@@ -1,0 +1,7 @@
+flowchart TD
+  alert[Alert fires] --> ack[On-call acknowledges]
+  ack --> sev{Severity?}
+  sev -- SEV1 --> incident[Declare incident and page commander]
+  sev -- SEV3 --> ticket[Create ticket]
+  incident --> mitigate[Mitigate]
+  mitigate --> review[Blameless review]

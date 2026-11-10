@@ -1,0 +1,46 @@
+name: Documentation site
+
+# Builds the Markdown documentation into a website (pnpm docs:site) and publishes it with GitHub Pages.
+# Enable Pages with "GitHub Actions" as the source in the repository settings.
+on:
+  push:
+    branches: [main]
+    paths: ['*.md', 'docs/**', 'fixtures/README.md', 'scripts/build-docs-site.ts', 'packages/shared/src/document-render.ts', 'apps/web/public/favicon.svg']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build the site (fails on broken links or images)
+        env:
+          DOCS_REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
+        run: pnpm docs:site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/docs-site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

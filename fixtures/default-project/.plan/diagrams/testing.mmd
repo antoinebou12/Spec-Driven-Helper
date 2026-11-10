@@ -1,0 +1,6 @@
+flowchart TB
+  e2e[End-to-end: few critical journeys]
+  integration[Integration and contract: real dependencies]
+  unit[Unit: domain rules, many and fast]
+  e2e --- integration
+  integration --- unit

@@ -218,3 +218,26 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# SDD Studio workspace
+node_modules/
+dist/
+.env
+.env.*.local
+test-results/
+playwright-report/
+.runtime/
+*.log
+storybook-static/
+docs/architecture/dependencies.html
+.act/secrets
+.act/vars
+.act/artifacts/
+.act/*.log
+.pnpm-store/
+coverage/
+
+.venv
+lighthouse-report
+perf-report
+

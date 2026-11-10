@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ include "sdd.fullname" . }}-test
+  labels:
+    {{- include "sdd.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  restartPolicy: Never
+  automountServiceAccountToken: false
+  securityContext:
+    {{- toYaml .Values.podSecurityContext | nindent 4 }}
+  containers:
+    - name: health
+      image: {{ include "sdd.image" . }}
+      command:
+        - node
+        - -e
+        - "fetch('http://{{ include "sdd.fullname" . }}:{{ .Values.service.port }}/api/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+      securityContext:
+        {{- toYaml .Values.securityContext | nindent 8 }}

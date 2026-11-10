@@ -1,0 +1,8 @@
+SDD Studio is starting.
+
+1. Wait for the API: kubectl -n {{ .Release.Namespace }} rollout status deploy/{{ include "sdd.fullname" . }}-api
+2. Open {{ .Values.appOrigin }}{{ if not .Values.ingress.enabled }} (or: kubectl -n {{ .Release.Namespace }} port-forward svc/{{ include "sdd.fullname" . }} 3001:{{ .Values.service.port }}){{ end }}
+3. Sign in with the bootstrap Owner. Keep secrets.encryptionKey safe: stored provider credentials need it.
+
+Documentation: {{ .Values.appOrigin }}/docs/
+Check the release: helm test {{ .Release.Name }} -n {{ .Release.Namespace }}

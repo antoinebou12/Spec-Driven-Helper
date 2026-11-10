@@ -1,0 +1,7 @@
+flowchart LR
+  subgraph included[In scope]
+    submit[Submit request] --> track[Track status]
+  end
+  subgraph excluded[Out of scope]
+    billing[Billing changes]
+  end

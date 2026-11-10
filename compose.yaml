@@ -1,0 +1,162 @@
+# SDD Studio. `docker compose up -d` starts PostgreSQL, the app (API and web client) and the worker
+# on http://localhost:3001. Settings come from .env (copy .env.example); see docs/installation.md.
+#
+# Optional profiles (`--profile <name>` or COMPOSE_PROFILES=ollama,pdf in .env):
+#   ollama            Ollama in a container plus a one-shot model pull. Set COMPOSE_OLLAMA_URL=http://ollama:11434.
+#   pdf               Isolated PDF publisher. Set PUBLISHER_URL=http://publisher:3200 and PUBLISHER_TOKEN.
+# Separate API and nginx images instead of the all-in-one app: add -f compose.split.yaml.
+# GPU for the ollama profile: add -f compose.gpu.yaml.
+
+x-logging: &logging
+  driver: local
+  options:
+    max-size: 10m
+    max-file: '3'
+
+x-hardening: &hardening
+  security_opt: ['no-new-privileges:true']
+  cap_drop: [ALL]
+
+x-app: &app
+  build:
+    context: .
+    dockerfile: docker/local.Dockerfile
+  image: sdd-studio:local
+  restart: unless-stopped
+  env_file:
+    - path: .env
+      required: false
+  environment: &app-environment
+    DATABASE_URL: postgresql://sdd:${POSTGRES_PASSWORD:-sdd-local-development}@postgres:5432/sdd_studio
+    ENCRYPTION_KEY: ${ENCRYPTION_KEY:?Set ENCRYPTION_KEY in .env (node -e "console.log(require('crypto').randomBytes(32).toString('hex'))")}
+    # 127.0.0.1 inside a container is the container itself. The default reaches Ollama running on
+    # the Docker host; with the ollama profile use http://ollama:11434.
+    OLLAMA_URL: ${COMPOSE_OLLAMA_URL:-http://host.docker.internal:11434}
+    HOME: /tmp
+  extra_hosts: ['host.docker.internal:host-gateway']
+  # The code is immutable; Git work happens in /tmp.
+  read_only: true
+  tmpfs:
+    - /tmp:size=1g,mode=1777
+    - /app/.runtime:size=64m,uid=1000,gid=1000
+  depends_on:
+    postgres:
+      condition: service_healthy
+  logging: *logging
+  <<: *hardening
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: sdd
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sdd-local-development}
+      POSTGRES_DB: sdd_studio
+    ports:
+      - '127.0.0.1:${POSTGRES_PORT:-5433}:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    shm_size: 256m
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U sdd -d sdd_studio']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    logging: *logging
+    security_opt: ['no-new-privileges:true']
+
+  app:
+    <<: *app
+    ports:
+      - '127.0.0.1:${APP_PORT:-3001}:3001'
+    environment:
+      <<: *app-environment
+      HOST: 0.0.0.0
+      APP_ORIGIN: ${COMPOSE_APP_ORIGIN:-http://localhost:3001}
+      APP_ALLOWED_ORIGINS: ${APP_ALLOWED_ORIGINS:-http://localhost:5173,http://localhost:3001,http://127.0.0.1:3001}
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:3001/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      start_period: 40s
+      retries: 5
+
+  worker:
+    <<: *app
+    command: ['pnpm', 'worker']
+    # The worker has no HTTP port; the image health check does not apply.
+    healthcheck:
+      disable: true
+
+  ollama:
+    profiles: ['ollama']
+    image: ollama/ollama:${OLLAMA_IMAGE_TAG:-latest}
+    restart: unless-stopped
+    environment:
+      OLLAMA_KEEP_ALIVE: 10m
+    volumes:
+      - ollama-models:/root/.ollama
+    # Not published: the app reaches it on the Compose network. Uncomment to use it from the host.
+    # ports: ['127.0.0.1:11435:11434']
+    healthcheck:
+      test: ['CMD', 'ollama', 'list']
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    logging: *logging
+    security_opt: ['no-new-privileges:true']
+
+  ollama-pull:
+    profiles: ['ollama']
+    image: ollama/ollama:${OLLAMA_IMAGE_TAG:-latest}
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5:3b}
+      OLLAMA_EMBEDDING_MODEL: ${OLLAMA_EMBEDDING_MODEL:-nomic-embed-text}
+    entrypoint:
+      ['/bin/sh', '-c', 'ollama pull "$$OLLAMA_MODEL" && ollama pull "$$OLLAMA_EMBEDDING_MODEL"']
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: 'no'
+    logging: *logging
+
+  publisher:
+    profiles: ['pdf']
+    build:
+      context: .
+      dockerfile: apps/publisher/Dockerfile
+    image: sdd-studio-publisher:local
+    restart: unless-stopped
+    environment:
+      HOST: 0.0.0.0
+      PUBLISHER_TOKEN: ${PUBLISHER_TOKEN:-}
+    # Chromium needs shared memory for large reports; no network access is required.
+    shm_size: 1g
+    init: true
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:3200/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 15s
+      timeout: 5s
+      start_period: 30s
+      retries: 5
+    logging: *logging
+    security_opt: ['no-new-privileges:true']
+
+
+volumes:
+  postgres-data:
+  ollama-models:

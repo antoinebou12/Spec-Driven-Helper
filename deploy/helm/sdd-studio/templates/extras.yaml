@@ -1,0 +1,54 @@
+{{- if and .Values.podDisruptionBudget.enabled (gt (int .Values.api.replicas) 1) }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "sdd.fullname" . }}-api
+  labels:
+    {{- include "sdd.labels" . | nindent 4 }}
+spec:
+  minAvailable: {{ .Values.podDisruptionBudget.minAvailable }}
+  selector:
+    matchLabels:
+      {{- include "sdd.selector" (dict "root" . "component" "api") | nindent 6 }}
+{{- end }}
+{{- if .Values.networkPolicy.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "sdd.fullname" . }}-api
+  labels:
+    {{- include "sdd.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "sdd.selector" (dict "root" . "component" "api") | nindent 6 }}
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              {{- toYaml .Values.networkPolicy.ingressNamespaceSelector | nindent 14 }}
+      ports:
+        - port: 3001
+{{- end }}
+{{- if .Values.serviceMonitor.enabled }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "sdd.fullname" . }}
+  labels:
+    {{- include "sdd.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "sdd.labels" . | nindent 6 }}
+  endpoints:
+    - port: http
+      path: /api/metrics
+      interval: {{ .Values.serviceMonitor.interval }}
+      bearerTokenSecret:
+        name: {{ include "sdd.secretName" . }}
+        key: METRICS_TOKEN
+{{- end }}

@@ -1,0 +1,24 @@
+@startuml components
+' Allowed dependencies between code slices. tests/architecture.test.ts fails when the code
+' depends on a slice through an arrow that is not drawn here. Update both together.
+title SDD Studio — code slices
+
+[Web client\napps/web] as web
+[API and worker\napps/api] as api
+[Shared domain\npackages/shared] as shared
+[Publisher\napps/publisher] as publisher
+[Agent runner\napps/agent-runner] as agent-runner
+[Operational scripts\nscripts] as scripts
+
+web --> shared : domain rules, schemas
+api --> shared : domain rules, schemas
+publisher --> shared : report model
+agent-runner --> shared : policy types
+scripts --> api : migrations, storage
+scripts --> shared : canonical JSON
+
+note bottom of shared
+  No I/O, no frameworks:
+  runs in the browser and on the server.
+end note
+@enduml

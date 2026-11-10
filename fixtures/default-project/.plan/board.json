@@ -1,0 +1,412 @@
+{
+  "format": "sdd-studio-board",
+  "version": 1,
+  "cards": [
+    {
+      "id": "REQ-001",
+      "title": "Customers submit a request with up to 5 attachments",
+      "body": "Given a signed-in customer, when they submit a valid request, then it receives an ID within 2 seconds.",
+      "column": "done",
+      "group": "Requirements",
+      "sourceIds": [
+        "REQ-001",
+        "TEST-001",
+        "UC-001",
+        "CMP-002"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "REQ-002",
+      "title": "Customers see only their organization’s requests",
+      "body": "Given a customer of organization A, when they request a record of organization B, then the API returns 404 and audits the attempt.",
+      "column": "done",
+      "group": "Requirements",
+      "sourceIds": [
+        "REQ-002",
+        "TEST-002",
+        "CMP-002"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "REQ-003",
+      "title": "Customers see a timeline of status changes and replies",
+      "body": "Timeline shows a new reply within 5 seconds.",
+      "column": "review",
+      "group": "Requirements",
+      "sourceIds": [
+        "REQ-003",
+        "TEST-003",
+        "UC-002",
+        "CMP-001"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "REQ-004",
+      "title": "Agents reply to requests from a triage queue",
+      "body": "Given an agent, when they reply, then the customer sees it within 5 seconds.",
+      "column": "doing",
+      "group": "Requirements",
+      "sourceIds": [
+        "REQ-004",
+        "TEST-004",
+        "UC-003"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "REQ-005",
+      "title": "Customers receive an email when a request changes status",
+      "body": "99% of status emails are sent within 2 minutes.",
+      "column": "todo",
+      "group": "Requirements",
+      "sourceIds": [
+        "REQ-005",
+        "TEST-005",
+        "CMP-003"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "REQ-006",
+      "title": "All screens meet WCAG 2.2 AA",
+      "body": "No serious axe violations in 5 end-to-end journeys; manual NVDA pass.",
+      "column": "backlog",
+      "group": "Requirements",
+      "sourceIds": [
+        "REQ-006",
+        "TEST-006",
+        "CMP-001"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "UC-001",
+      "title": "Submit a request",
+      "body": "",
+      "column": "done",
+      "group": "Use cases",
+      "sourceIds": [
+        "UC-001",
+        "REQ-001"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "UC-002",
+      "title": "Follow a request",
+      "body": "",
+      "column": "done",
+      "group": "Use cases",
+      "sourceIds": [
+        "UC-002",
+        "REQ-003"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "UC-003",
+      "title": "Triage and reply",
+      "body": "",
+      "column": "review",
+      "group": "Use cases",
+      "sourceIds": [
+        "UC-003",
+        "REQ-004"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "CMP-001",
+      "title": "Web app",
+      "body": "",
+      "column": "doing",
+      "group": "Components",
+      "sourceIds": [
+        "CMP-001",
+        "REQ-003",
+        "REQ-006"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "CMP-002",
+      "title": "Request API",
+      "body": "",
+      "column": "todo",
+      "group": "Components",
+      "sourceIds": [
+        "CMP-002",
+        "REQ-001",
+        "REQ-002",
+        "ADR-001",
+        "CMP-004"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "CMP-003",
+      "title": "Notification worker",
+      "body": "",
+      "column": "backlog",
+      "group": "Components",
+      "sourceIds": [
+        "CMP-003",
+        "REQ-005",
+        "ADR-003"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "CMP-004",
+      "title": "Request store",
+      "body": "",
+      "column": "done",
+      "group": "Components",
+      "sourceIds": [
+        "CMP-004",
+        "ADR-002",
+        "CMP-002"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "ADR-001",
+      "title": "Modular monolith for release 1",
+      "body": "Context: team of 3, one deployable preferred. Decision: single API service with modules. Consequences: coarse scaling; revisit if two modules need independent scaling.",
+      "column": "done",
+      "group": "Decisions",
+      "sourceIds": [
+        "ADR-001",
+        "CMP-002"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "ADR-002",
+      "title": "PostgreSQL for requests, object storage for attachments",
+      "body": "Context: flexible timeline entries and binary attachments. Decision: PostgreSQL 17 with JSONB timelines and a standby replica; attachments in S3-compatible object storage. Consequences: organization filter enforced in the data layer; schema migrations in the release pipeline.",
+      "column": "review",
+      "group": "Decisions",
+      "sourceIds": [
+        "ADR-002",
+        "CMP-004"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "ADR-003",
+      "title": "Durable notification jobs in PostgreSQL",
+      "body": "Context: email provider may be unavailable. Decision: leased jobs with retries in PostgreSQL (SELECT … FOR UPDATE SKIP LOCKED). Consequences: at-least-once delivery; consumers deduplicate.",
+      "column": "doing",
+      "group": "Decisions",
+      "sourceIds": [
+        "ADR-003",
+        "CMP-003",
+        "RISK-003"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "RISK-001",
+      "title": "Low customer adoption",
+      "body": "Likelihood medium, impact high.",
+      "column": "todo",
+      "group": "Risk mitigations",
+      "sourceIds": [
+        "RISK-001",
+        "TEST-007"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "RISK-002",
+      "title": "Cross-organization data exposure",
+      "body": "Likelihood low, impact critical.",
+      "column": "backlog",
+      "group": "Risk mitigations",
+      "sourceIds": [
+        "RISK-002",
+        "TEST-002"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "RISK-003",
+      "title": "Email provider outage delays notifications",
+      "body": "Likelihood medium, impact low.",
+      "column": "done",
+      "group": "Risk mitigations",
+      "sourceIds": [
+        "RISK-003",
+        "ADR-003"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "TEST-001",
+      "title": "API integration: submit request returns ID < 2 s",
+      "body": "",
+      "column": "done",
+      "group": "Tests",
+      "sourceIds": [
+        "TEST-001",
+        "REQ-001"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "TEST-002",
+      "title": "API integration: cross-organization access returns 404 and is audited",
+      "body": "",
+      "column": "review",
+      "group": "Tests",
+      "sourceIds": [
+        "TEST-002",
+        "REQ-002",
+        "RISK-002"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "TEST-003",
+      "title": "End-to-end: customer sees agent reply in timeline",
+      "body": "",
+      "column": "doing",
+      "group": "Tests",
+      "sourceIds": [
+        "TEST-003",
+        "REQ-003"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "TEST-004",
+      "title": "End-to-end: agent replies from triage queue",
+      "body": "",
+      "column": "todo",
+      "group": "Tests",
+      "sourceIds": [
+        "TEST-004",
+        "REQ-004"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "TEST-005",
+      "title": "Worker integration: status email queued and retried",
+      "body": "",
+      "column": "backlog",
+      "group": "Tests",
+      "sourceIds": [
+        "TEST-005",
+        "REQ-005"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "TEST-006",
+      "title": "Accessibility: axe checks on all journeys",
+      "body": "",
+      "column": "done",
+      "group": "Tests",
+      "sourceIds": [
+        "TEST-006",
+        "REQ-006"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    },
+    {
+      "id": "TEST-007",
+      "title": "Pilot usability study with 3 accounts",
+      "body": "",
+      "column": "done",
+      "group": "Tests",
+      "sourceIds": [
+        "TEST-007",
+        "RISK-001"
+      ],
+      "dependsOn": [],
+      "pullRequests": [],
+      "assignee": "",
+      "obsolete": false
+    }
+  ]
+}

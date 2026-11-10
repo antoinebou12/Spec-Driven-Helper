@@ -1,0 +1,32 @@
+groups:
+  - name: sdd-studio
+    rules:
+      - alert: SddStudioDown
+        expr: up{job="sdd-studio"} == 0
+        for: 2m
+        labels: { severity: critical }
+        annotations:
+          summary: SDD Studio API is not answering metrics scrapes
+      - alert: SddStudioHighErrorRate
+        expr: sum(rate(sdd_http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(sdd_http_requests_total[5m])), 1e-9) > 0.05
+        for: 10m
+        labels: { severity: warning }
+        annotations:
+          summary: More than 5% of requests fail with a server error
+      - alert: SddStudioSlowRequests
+        expr: histogram_quantile(0.95, sum by (le) (rate(sdd_http_request_duration_seconds_bucket[5m]))) > 2.5
+        for: 10m
+        labels: { severity: warning }
+        annotations:
+          summary: 95th percentile request latency is above 2.5 s
+      - alert: SddStudioJobsFailing
+        expr: delta(sdd_jobs{status="failed"}[30m]) > 3
+        labels: { severity: warning }
+        annotations:
+          summary: Several background jobs failed in the last 30 minutes
+      - alert: SddStudioJobsStuck
+        expr: sdd_jobs{status="queued"} > 20
+        for: 15m
+        labels: { severity: warning }
+        annotations:
+          summary: Jobs are queuing up; check that the worker is running
